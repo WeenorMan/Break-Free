@@ -8,11 +8,11 @@ public class PlayerIdle : BaseState<PlayerStateMachine.PlayerState>
 
     public override void EnterState()
     {
-
+        Debug.Log("Idle");
     }
     public override void ExitState()
     {
-
+        Debug.Log("Exit Idle");
     }
     public override void UpdateState()
     {

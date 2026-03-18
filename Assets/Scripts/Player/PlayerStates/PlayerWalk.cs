@@ -8,15 +8,18 @@ public class PlayerWalk : BaseState<PlayerStateMachine.PlayerState>
 
     public override void EnterState()
     {
-
+        Debug.Log("Walk");
+        PlayerStateMachine playerStateMachine = GameObject.FindFirstObjectByType<PlayerStateMachine>();
+        playerStateMachine.rb.linearVelocity = new Vector2(playerStateMachine.walkSpeed
+            * PlayerInputHandler.Instance.MoveInput.x, playerStateMachine.rb.linearVelocity.y);
     }
     public override void ExitState()
     {
-
+        Debug.Log("Exit Walk");
     }
     public override void UpdateState()
     {
-
+        
     }
     public override PlayerStateMachine.PlayerState GetNextState()
     {

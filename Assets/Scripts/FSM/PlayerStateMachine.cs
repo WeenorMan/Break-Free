@@ -6,12 +6,12 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerState>
     {
         PlayerIdle,
         PlayerWalk,
-        Jump,
-        Attack,
+        PlayerJump,
+        PlayerAttack,
     }
     public Rigidbody2D rb;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float walkSpeed = 3f;
+    [SerializeField] public float jumpForce = 5f;
+    [SerializeField] public float walkSpeed = 3f;
     [SerializeField] private float fallMultiplier = 2f;
 
     private bool isGrounded;
@@ -45,26 +45,28 @@ public class PlayerStateMachine : StateManager<PlayerStateMachine.PlayerState>
 
         if (PlayerInputHandler.Instance.JumpTriggered && GetIsGrounded())
         {
+            TransitionToState(PlayerState.PlayerJump);
             Debug.Log("jump pressed");
-            Jump();
             isGrounded = false;
         }
 
+        if (PlayerInputHandler.Instance.MoveInput.x != 0)
+        {
+            TransitionToState(PlayerState.PlayerWalk);
+        }
+         
     }
     private bool GetIsGrounded()
     {
         return Physics2D.Raycast(transform.position, Vector2.down, 0.75f, LayerMask.GetMask("Ground"));
     }
 
-    private void Jump()
-    {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-    }
+    
 
     private void InitializeStates()
     {
         States.Add(PlayerState.PlayerIdle, new PlayerIdle(PlayerState.PlayerIdle));
         States.Add(PlayerState.PlayerWalk, new PlayerWalk(PlayerState.PlayerWalk));
-
+        States.Add(PlayerState.PlayerJump, new PlayerJump(PlayerState.PlayerJump));
     }
 }
