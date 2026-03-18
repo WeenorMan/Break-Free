@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,11 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fallMultiplier = 2f;
 
     private bool isGrounded;
-    private PlayerInputHandler inputHandler;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        inputHandler = PlayerInputHandler.Instance;
         isGrounded = true;
     }
 
@@ -21,6 +20,13 @@ public class PlayerController : MonoBehaviour
         if (!GetIsGrounded())
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * fallMultiplier * Time.fixedDeltaTime;
+
+            if (GetIsGrounded())
+            {
+                Debug.Log("WHEYYYY");
+                rb.linearVelocity += Vector2.up;
+            }
+
             //if (GetIsGrounded())
             //{
             //    isGrounded = true;
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
 
-        if (inputHandler.JumpTriggered && GetIsGrounded())
+        if (PlayerInputHandler.Instance.JumpTriggered && GetIsGrounded())
         {
             Debug.Log("jump pressed");
             Jump();
