@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
 
-        if (PlayerInputHandler.Instance.JumpTriggered && GetIsGrounded())
+        if (PlayerInputHandler.Instance.jumpTriggered && GetIsGrounded())
         {
             Debug.Log("jump pressed");
             Jump();
