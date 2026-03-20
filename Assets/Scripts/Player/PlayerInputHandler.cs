@@ -23,6 +23,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Vector2 moveInput { get; private set; }
     public Vector2 lookInput { get; private set; }
     public bool jumpTriggered { get; private set; }
+    public bool jumpHeld { get; private set; }
     public bool jumpReleased { get; private set; }
     public float sprintValue { get; private set; }
 
@@ -59,19 +60,33 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.performed += context => lookInput = context.ReadValue<Vector2>();
         lookAction.canceled += context => lookInput = Vector2.zero;
 
-        jumpAction.performed += context => jumpTriggered = true;
-        jumpAction.canceled += context => jumpTriggered = false;
+        // Track whether the jump button is currently held via performed/canceled callbacks.
+        // Single-frame events (pressed/released) are provided by polling WasPerformedThisFrame/WasReleasedThisFrame in Update().
+        if (jumpAction != null)
+        {
+            jumpAction.performed += context => jumpHeld = true;
+            jumpAction.canceled += context => jumpHeld = false;
+        }
 
         sprintAction.performed += context => sprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => sprintValue = 0f;
-
-        if (jumpAction.WasReleasedThisFrame())
-        {
-            jumpReleased = true;
-        }
-
     }
 
+    private void Update()
+    {
+        // Poll the action each frame so jumpReleased/jumpTriggered are single-frame flags
+        if (jumpAction != null)
+        {
+            // true only on the frame the action was performed/released
+            jumpReleased = jumpAction.WasReleasedThisFrame();
+            jumpTriggered = jumpAction.WasPerformedThisFrame();
+        }
+        else
+        {
+            jumpReleased = false;
+            jumpTriggered = false;
+        }
+    }
     private void OnEnable()
     {
         moveAction.Enable();

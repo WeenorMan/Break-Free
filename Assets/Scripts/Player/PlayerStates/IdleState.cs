@@ -25,6 +25,7 @@ namespace Player
         public override void LogicUpdate()
         {
             CheckForJump();
+            CheckForWalk();
             base.LogicUpdate();
         }
 
@@ -35,7 +36,17 @@ namespace Player
                 sm.ChangeState(player.jumpState);
             }
         }
+
+        void CheckForWalk()
+        {
+            if (PlayerInputHandler.Instance.moveInput != Vector2.zero)
+            {
+                sm.ChangeState(player.walkState);
+            }
+            
+        }
+
+
+
     }
-
-
 }
