@@ -21,14 +21,17 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            CheckForJump();
+           
             player.rb.linearVelocity = new Vector2(PlayerInputHandler.Instance.moveInput.x * player.walkSpeed,
-                player.rb.linearVelocity.y);
+            player.rb.linearVelocity.y);
 
             if (PlayerInputHandler.Instance.moveInput == Vector2.zero)
             {
                 sm.ChangeState(player.idleState);
             }
+
+            CheckForJump();
+            CheckForDash();
         }
 
         void CheckForJump()
@@ -36,6 +39,14 @@ namespace Player
             if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsGrounded())
             {
                 sm.ChangeState(player.jumpState);
+            }
+        }
+
+        void CheckForDash()
+        {
+            if (PlayerInputHandler.Instance.dashTriggered)
+            {
+                sm.ChangeState(player.dashState);
             }
         }
     }

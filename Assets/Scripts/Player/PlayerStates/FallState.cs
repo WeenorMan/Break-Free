@@ -23,10 +23,15 @@ namespace Player
 
         public override void PhysicsUpdate()
         {
-            // If falling, apply fall multiplier for a snappier fall
             if (player.rb.linearVelocity.y <= 0f && !player.GetIsGrounded())
             {
                 player.rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.fallMultiplier - 1f) * Time.fixedDeltaTime;
+            }
+
+            if (PlayerInputHandler.Instance != null)
+            {
+                float inputX = PlayerInputHandler.Instance.moveInput.x;
+                player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
             }
         }
 
@@ -35,6 +40,14 @@ namespace Player
             if (player.GetIsGrounded())
             {
                 sm.ChangeState(player.idleState);
+            }
+        }
+
+        void CheckForDash()
+        {
+            if (PlayerInputHandler.Instance.dashTriggered)
+            {
+                sm.ChangeState(player.dashState);
             }
         }
     }

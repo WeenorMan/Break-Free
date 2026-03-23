@@ -26,6 +26,7 @@ namespace Player
         {
             CheckForJump();
             CheckForWalk();
+            CheckForDash();
             base.LogicUpdate();
         }
 
@@ -46,7 +47,14 @@ namespace Player
             
         }
 
-
+        void CheckForDash()
+        {
+            if (PlayerInputHandler.Instance.dashTriggered)
+            {
+                Debug.Log("dash triggered");
+                sm.ChangeState(player.dashState);
+            }
+        }
 
     }
 }

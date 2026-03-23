@@ -14,11 +14,14 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string look = "Look";
     [SerializeField] private string jump = "Jump";
     [SerializeField] private string sprint = "Sprint";
+    [SerializeField] private string dash = "Dash";
+
 
     private InputAction moveAction;
     private InputAction lookAction;
     private InputAction jumpAction;
     private InputAction sprintAction;
+    private InputAction dashAction;
 
     public Vector2 moveInput { get; private set; }
     public Vector2 lookInput { get; private set; }
@@ -26,6 +29,8 @@ public class PlayerInputHandler : MonoBehaviour
     public bool jumpHeld { get; private set; }
     public bool jumpReleased { get; private set; }
     public float sprintValue { get; private set; }
+    public bool dashTriggered { get; private set; }
+    public bool dashReleased { get; private set; }
 
 
     public static PlayerInputHandler Instance { get; private set; }
@@ -49,6 +54,7 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction = playerControls.FindActionMap(actionMapName).FindAction(look);
         jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
         sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
+        dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
         RegisterInputActions();
     }
 
@@ -60,8 +66,6 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.performed += context => lookInput = context.ReadValue<Vector2>();
         lookAction.canceled += context => lookInput = Vector2.zero;
 
-        // Track whether the jump button is currently held via performed/canceled callbacks.
-        // Single-frame events (pressed/released) are provided by polling WasPerformedThisFrame/WasReleasedThisFrame in Update().
         if (jumpAction != null)
         {
             jumpAction.performed += context => jumpHeld = true;
@@ -70,14 +74,27 @@ public class PlayerInputHandler : MonoBehaviour
 
         sprintAction.performed += context => sprintValue = context.ReadValue<float>();
         sprintAction.canceled += context => sprintValue = 0f;
+
+        //dashAction.performed += context => dashTriggered = true;
+       // dashAction.canceled += context => dashTriggered = false;
     }
 
     private void Update()
     {
-        // Poll the action each frame so jumpReleased/jumpTriggered are single-frame flags
+        if (dashAction != null)
+        {
+            dashTriggered = dashAction.WasPerformedThisFrame();
+            dashReleased = dashAction.WasReleasedThisFrame();
+        }
+        else
+        {
+            dashTriggered = false;
+            dashReleased = false;
+        }
+
+
         if (jumpAction != null)
         {
-            // true only on the frame the action was performed/released
             jumpReleased = jumpAction.WasReleasedThisFrame();
             jumpTriggered = jumpAction.WasPerformedThisFrame();
         }
@@ -93,6 +110,7 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.Enable();
         jumpAction.Enable();
         sprintAction.Enable();
+        dashAction.Enable();
     }
 
     private void OnDisable()
@@ -101,5 +119,6 @@ public class PlayerInputHandler : MonoBehaviour
         lookAction.Disable();
         jumpAction.Disable();
         sprintAction.Disable();
+        dashAction.Disable();
     }
 }

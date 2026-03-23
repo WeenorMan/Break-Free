@@ -37,21 +37,36 @@ namespace Player
                 sm.ChangeState(player.fallState);
             }
 
+            CheckForDash();
+
             base.LogicUpdate();
         }
 
         public override void PhysicsUpdate()
         {
-            // If ascending but the player released jump, apply extra gravity to shorten the jump.
             bool jumpHeld = PlayerInputHandler.Instance != null && PlayerInputHandler.Instance.jumpHeld;
             if (player.rb.linearVelocity.y > 0f && !jumpHeld)
             {
                 player.rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
             }
 
+            if (PlayerInputHandler.Instance != null)
+            {
+                float inputX = PlayerInputHandler.Instance.moveInput.x;
+                player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
+            }
+
             base.PhysicsUpdate();
         }
 
-       
+        void CheckForDash()
+        {
+            if (PlayerInputHandler.Instance.dashTriggered)
+            {
+                sm.ChangeState(player.dashState);
+            }
+
+
+        }
     }
 }
