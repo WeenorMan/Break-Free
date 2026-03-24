@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace Player
         public Rigidbody2D rb;
         public bool isGrounded;
         public bool isFacingRight;
+
+        public TMPro.TextMeshProUGUI stateText;
 
         [Header("Box Cast Settings")]
         public Vector2 boxSize;
@@ -31,7 +34,8 @@ namespace Player
         public JumpState jumpState;
         public WalkState walkState;
         public FallState fallState;
-        public DashState dashState;
+        public GroundDashState groundDashState;
+        public AirDashState airDashState;
 
         private void Awake()
         {
@@ -49,7 +53,10 @@ namespace Player
             jumpState = new JumpState(this, sm);
             walkState = new WalkState(this, sm);
             fallState = new FallState(this, sm);
-            dashState = new DashState(this, sm);
+            groundDashState = new GroundDashState(this, sm);
+            airDashState = new AirDashState(this, sm);
+
+            isFacingRight = true;
 
             sm.Init(idleState);
         }
@@ -68,7 +75,9 @@ namespace Player
             sm.CurrentState.LogicUpdate();
 
             Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
-            
+
+            stateText.text = "State: " + sm.CurrentState;
+            Flip();
         }
         public bool GetIsGrounded()
         {
@@ -88,7 +97,31 @@ namespace Player
             Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
         }
 
-        
+        public void CheckForDash()
+        {
+            if (PlayerInputHandler.Instance.dashTriggered )
+            {
+                if( GetIsGrounded() )
+                {
+                    sm.ChangeState(groundDashState);
+                }
+                else
+                {
+                    sm.ChangeState(airDashState);
+                }
+            }
+        }
+
+        public void Flip()
+        {
+            if(isFacingRight && PlayerInputHandler.Instance.moveInput.x < 0 || !isFacingRight && PlayerInputHandler.Instance.moveInput.x  > 0)
+            {
+                Vector3 localScale = transform.localScale;
+                isFacingRight = !isFacingRight;
+                localScale.x *= -1f;
+                transform.localScale = localScale;
+            }
+        }
 
     }
 

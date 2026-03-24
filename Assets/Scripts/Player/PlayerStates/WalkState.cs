@@ -31,7 +31,7 @@ namespace Player
             }
 
             CheckForJump();
-            CheckForDash();
+            player.CheckForDash();
         }
 
         void CheckForJump()
@@ -42,12 +42,6 @@ namespace Player
             }
         }
 
-        void CheckForDash()
-        {
-            if (PlayerInputHandler.Instance.dashTriggered)
-            {
-                sm.ChangeState(player.dashState);
-            }
-        }
+     
     }
 }

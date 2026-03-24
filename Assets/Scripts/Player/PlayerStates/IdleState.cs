@@ -14,6 +14,7 @@ namespace Player
         {
             base.Enter();
             Debug.Log("idle entered");
+
         }
 
         public override void Exit()
@@ -24,9 +25,10 @@ namespace Player
 
         public override void LogicUpdate()
         {
+
             CheckForJump();
             CheckForWalk();
-            CheckForDash();
+            player.CheckForDash();
             base.LogicUpdate();
         }
 
@@ -47,14 +49,7 @@ namespace Player
             
         }
 
-        void CheckForDash()
-        {
-            if (PlayerInputHandler.Instance.dashTriggered)
-            {
-                Debug.Log("dash triggered");
-                sm.ChangeState(player.dashState);
-            }
-        }
+      
 
     }
 }

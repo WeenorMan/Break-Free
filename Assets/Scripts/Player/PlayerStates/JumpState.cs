@@ -37,7 +37,7 @@ namespace Player
                 sm.ChangeState(player.fallState);
             }
 
-            CheckForDash();
+            player.CheckForDash();
 
             base.LogicUpdate();
         }
@@ -59,14 +59,6 @@ namespace Player
             base.PhysicsUpdate();
         }
 
-        void CheckForDash()
-        {
-            if (PlayerInputHandler.Instance.dashTriggered)
-            {
-                sm.ChangeState(player.dashState);
-            }
-
-
-        }
+      
     }
 }
