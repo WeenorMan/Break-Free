@@ -11,113 +11,75 @@ namespace Player
 
         }
 
-        [Header("Dash Settings")]
-        public float dashDuration = 0.2f;
-        public float dashCooldown = 1f;
-        public float dashSpeed = 10f;
-
-        private bool isDashing;
-        private bool hasDashed;
-        private bool canDash = true;
-        private float gravity;
+        
 
         public override void Enter()
         {
             base.Enter();
             //canDash = true;
-            gravity = player.rb.gravityScale;
+            player.gravity = player.rb.gravityScale;
             Debug.Log("dash entered");
 
-            DoDash();
+            //DoDash();
+            if (player.canDash)
+            {
+                player.StartCoroutine(Dash());
+            }
 
         }
         public override void Exit()
         {
             base.Exit();
+            player.rb.linearVelocity = new Vector2(player.rb.linearVelocity.x * 0.1f, player.rb.linearVelocity.y);
         }
         public override void LogicUpdate()
         {
+            if (player.isDashing) return;
+
 
             base.LogicUpdate();
 
-            //do cooldown
-            dashCooldown -= Time.deltaTime;
-            if (dashCooldown <= 0)
-            {
-                //check button
-                if (PlayerInputHandler.Instance.dashTriggered)
-                {
-                    DoDash();
-                }
-
-                //count down dash duration
-                dashDuration -= Time.deltaTime;
-
-                if(dashDuration <= 0)
-                {
-                    if (PlayerInputHandler.Instance.dashTriggered)
-                    {
-                        DoDash();
-                    }
-                    else
-                    {
-                        sm.ChangeState(player.idleState);
-                    }
-                }
-            }
+           
 
         }
         public override void PhysicsUpdate()
         {
+            if (player.isDashing )
+            {
+                return;
+            }
             base.PhysicsUpdate();
         }
 
-        /*
-        IEnumerator Dash(float dashTime, float gravity, float timeInAir, float cooldown)
+        private IEnumerator Dash()
         {
-            player.rb.gravityScale = 0;
+            player.canDash = false;
+            player.isDashing = true;
 
-            canDash = false;
+            float originalGravity = player.rb.gravityScale;
+            player.rb.gravityScale = 0f;
+            player.rb.linearVelocity = new Vector2(player.transform.localScale.x * player.dashSpeed, 0f);
 
-            while (dashDuration > 0)
+            yield return new WaitForSeconds(player.dashDuration);
+            player.rb.gravityScale = originalGravity;
+            player.isDashing = false;
+            
+            if (!player.GetIsGrounded())
             {
-
-
-                dashDuration -= Time.deltaTime;
-                yield return null;
-            }
-
-            player.rb.linearVelocity = Vector2.zero;
-            hasDashed = true;
-            isDashing = false;
-            yield return new WaitForSeconds(timeInAir);
-
-            player.rb.gravityScale = gravity;
-
-            if (player.GetIsGrounded())
-            {
-                canDash = true;
-            }
-
-        }
-        */
-
-
-        void DoDash()
-        {
-            dashCooldown = 1f;
-            dashDuration = 0.2f;
-
-            if (player.isFacingRight)
-            {
-                player.rb.linearVelocity = new Vector2(dashSpeed, 0f);
-
+                sm.ChangeState(player.fallState);
             }
             else
             {
-                player.rb.linearVelocity = new Vector2(-dashSpeed, 0f);
+                sm.ChangeState(player.idleState);
+
             }
+
+            yield return new WaitForSeconds(player.dashCooldown);
+            player.canDash = true;
         }
+
+
+        
     }
 
 }

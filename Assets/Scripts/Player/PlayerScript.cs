@@ -27,7 +27,16 @@ namespace Player
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
 
-        
+        [Header("Dash Settings")]
+        public float dashDuration = 0.2f;
+        public float dashCooldown = 1f;
+        public float dashSpeed = 10f;
+
+        public bool isDashing;
+        public bool hasDashed;
+        public bool canDash = true;
+        public float gravity;
+        public bool inAir;
 
         // variables holding the different player states
         public IdleState idleState;
@@ -83,10 +92,12 @@ namespace Player
         {
             if(Physics2D.BoxCast(transform.position, boxSize,0, -transform.up, castDistance, LayerMask.GetMask("Ground")))
             {
+                inAir = false;
                 return true;
             }
             else
             {
+                inAir = true;
                 return false;
             }
             //return Physics2D.Raycast(transform.position, Vector2.down, 0.75f, LayerMask.GetMask("Ground"));
@@ -99,16 +110,12 @@ namespace Player
 
         public void CheckForDash()
         {
-            if (PlayerInputHandler.Instance.dashTriggered )
+            if (PlayerInputHandler.Instance.dashTriggered && canDash)
             {
-                if( GetIsGrounded() )
-                {
-                    sm.ChangeState(groundDashState);
-                }
-                else
-                {
-                    sm.ChangeState(airDashState);
-                }
+                sm.ChangeState(groundDashState);
+
+
+               
             }
         }
 

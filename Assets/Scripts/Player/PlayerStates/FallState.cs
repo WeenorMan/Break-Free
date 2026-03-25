@@ -18,6 +18,7 @@ namespace Player
         public override void LogicUpdate()
         {
             CheckForLand();
+            player.CheckForDash();
             base.LogicUpdate();
         }
 
