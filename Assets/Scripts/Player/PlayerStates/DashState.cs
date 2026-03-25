@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
-    public class GroundDashState : State
+    public class DashState : State
     {
-        public GroundDashState(PlayerScript player, StateMachine sm) : base(player, sm)
+        public DashState(PlayerScript player, StateMachine sm) : base(player, sm)
         {
 
         }

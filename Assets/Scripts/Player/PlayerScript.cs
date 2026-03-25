@@ -43,8 +43,7 @@ namespace Player
         public JumpState jumpState;
         public WalkState walkState;
         public FallState fallState;
-        public GroundDashState groundDashState;
-        public AirDashState airDashState;
+        public DashState dashState;
 
         private void Awake()
         {
@@ -62,8 +61,7 @@ namespace Player
             jumpState = new JumpState(this, sm);
             walkState = new WalkState(this, sm);
             fallState = new FallState(this, sm);
-            groundDashState = new GroundDashState(this, sm);
-            airDashState = new AirDashState(this, sm);
+            dashState = new DashState(this, sm);
 
             isFacingRight = true;
 
@@ -112,7 +110,7 @@ namespace Player
         {
             if (PlayerInputHandler.Instance.dashTriggered && canDash)
             {
-                sm.ChangeState(groundDashState);
+                sm.ChangeState(dashState);
 
 
                
