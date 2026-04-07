@@ -34,6 +34,12 @@ namespace Player
             player.CheckForDash();
         }
 
+        public override void PhysicsUpdate()
+        {
+            player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
+            base.PhysicsUpdate();
+        }
+
         void CheckForJump()
         {
             if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsGrounded())

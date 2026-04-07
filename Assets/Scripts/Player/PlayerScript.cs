@@ -9,6 +9,7 @@ namespace Player
     {
 
         public StateMachine sm;
+        public Animator anim;
         public Rigidbody2D rb;
         public bool isGrounded;
         public bool isFacingRight;
@@ -53,6 +54,7 @@ namespace Player
         private void Start()
         {
             sm = gameObject.AddComponent<StateMachine>();
+            anim = transform.GetChild(0).GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
             isGrounded = true;
 

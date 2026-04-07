@@ -17,6 +17,8 @@ namespace Player
         }
         public override void LogicUpdate()
         {
+            player.anim.SetBool("isJumping", !player.GetIsGrounded());
+
             CheckForLand();
             player.CheckForDash();
             base.LogicUpdate();
@@ -34,6 +36,8 @@ namespace Player
                 float inputX = PlayerInputHandler.Instance.moveInput.x;
                 player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
             }
+
+            player.anim.SetFloat("yVelocity", player.rb.linearVelocity.y);
         }
 
         void CheckForLand()

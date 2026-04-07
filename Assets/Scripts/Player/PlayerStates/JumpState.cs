@@ -27,6 +27,9 @@ namespace Player
 
         public override void LogicUpdate()
         {
+            player.anim.SetBool("isJumping", !player.GetIsGrounded());
+
+
             if (player.GetIsGrounded() && player.rb.linearVelocity.y <= 0f)
             {
                 sm.ChangeState(player.idleState);
@@ -55,6 +58,9 @@ namespace Player
                 float inputX = PlayerInputHandler.Instance.moveInput.x;
                 player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
             }
+
+            player.anim.SetFloat("yVelocity", player.rb.linearVelocity.y);
+
 
             base.PhysicsUpdate();
         }
