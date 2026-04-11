@@ -36,11 +36,7 @@ namespace Player
         {
             if (player.isDashing) return;
 
-
             base.LogicUpdate();
-
-           
-
         }
         public override void PhysicsUpdate()
         {
@@ -59,11 +55,15 @@ namespace Player
             float originalGravity = player.rb.gravityScale;
             player.rb.gravityScale = 0f;
             player.rb.linearVelocity = new Vector2(player.transform.localScale.x * player.dashSpeed, 0f);
+            player.anim.SetBool("isDashing", true);
+
 
             yield return new WaitForSeconds(player.dashDuration);
             player.rb.gravityScale = originalGravity;
             player.isDashing = false;
-            
+            player.anim.SetBool("isDashing", false);
+
+
             if (!player.GetIsGrounded())
             {
                 sm.ChangeState(player.fallState);
@@ -77,9 +77,6 @@ namespace Player
             yield return new WaitForSeconds(player.dashCooldown);
             player.canDash = true;
         }
-
-
-        
     }
 
 }

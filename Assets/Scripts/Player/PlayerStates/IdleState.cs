@@ -26,7 +26,7 @@ namespace Player
         public override void LogicUpdate()
         {
 
-            CheckForJump();
+            player.CheckForJump();
             CheckForWalk();
             player.CheckForDash();
             base.LogicUpdate();
@@ -37,13 +37,7 @@ namespace Player
             base.PhysicsUpdate();
         }
 
-        void CheckForJump()
-        {
-            if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsGrounded())
-            {
-                sm.ChangeState(player.jumpState);
-            }
-        }
+       
 
         void CheckForWalk()
         {

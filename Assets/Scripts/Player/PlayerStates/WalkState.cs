@@ -30,7 +30,7 @@ namespace Player
                 sm.ChangeState(player.idleState);
             }
 
-            CheckForJump();
+            player.CheckForJump();
             player.CheckForDash();
         }
 

@@ -7,12 +7,13 @@ namespace Player
 
     public class PlayerScript : MonoBehaviour
     {
-
+        #region Core Variables
         public StateMachine sm;
         public Animator anim;
         public Rigidbody2D rb;
         public bool isGrounded;
         public bool isFacingRight;
+        #endregion Core Variables
 
         public TMPro.TextMeshProUGUI stateText;
 
@@ -27,6 +28,10 @@ namespace Player
         [SerializeField] public float lowJumpMultiplier = 2f;
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
+        [SerializeField] private float coyoteTime = 0.2f;
+        private float coyoteTimeCounter;
+        [SerializeField] private float jumpBufferTime = 0.2f;
+        private float jumpBufferCounter;
 
         [Header("Dash Settings")]
         public float dashDuration = 0.2f;
@@ -81,6 +86,24 @@ namespace Player
         }
         void Update()
         {
+            if (GetIsGrounded())
+            {
+                coyoteTimeCounter = coyoteTime;
+            }
+            else
+            {
+                coyoteTimeCounter -= Time.deltaTime;
+            }
+
+            if (PlayerInputHandler.Instance.jumpTriggered)
+            {
+                jumpBufferCounter = jumpBufferTime;
+            }
+            else
+            {
+                jumpBufferCounter -= Time.deltaTime;
+            }
+
             sm.CurrentState.LogicUpdate();
 
             Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
@@ -113,9 +136,17 @@ namespace Player
             if (PlayerInputHandler.Instance.dashTriggered && canDash)
             {
                 sm.ChangeState(dashState);
+            }
+        }
 
+        public void CheckForJump()
+        {
+            if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
+            {
+                coyoteTimeCounter = 0;
+                jumpBufferCounter = 0;
 
-               
+                sm.ChangeState(jumpState);
             }
         }
 
