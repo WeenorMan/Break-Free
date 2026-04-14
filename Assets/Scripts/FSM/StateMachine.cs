@@ -7,6 +7,7 @@ namespace Player
     {
         public State CurrentState { get; private set; }
         public State LastState { get; private set; }
+        private int lastChangeFrame = -1;
 
         public void Init(State startingState)
         {
@@ -17,14 +18,15 @@ namespace Player
 
         public void ChangeState(State newState)
         {
-            //Debug.Log("Changing state to " + newState);
-            CurrentState.Exit();
+            //ensures that only one state change can happen per frame
+            if (lastChangeFrame == Time.frameCount) return;
+            lastChangeFrame = Time.frameCount;
+
+            if (CurrentState != null) CurrentState.Exit();
 
             LastState = CurrentState;
             CurrentState = newState;
             newState.Enter();
-
-
         }
 
         public State GetState()

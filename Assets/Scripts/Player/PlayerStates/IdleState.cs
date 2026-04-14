@@ -25,10 +25,10 @@ namespace Player
 
         public override void LogicUpdate()
         {
-
             player.CheckForJump();
             player.CheckForWalk();
             player.CheckForDash();
+
             base.LogicUpdate();
         }
         public override void PhysicsUpdate()

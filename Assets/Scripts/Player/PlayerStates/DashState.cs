@@ -16,11 +16,10 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            //canDash = true;
+            player.anim.Play("dash");
             player.gravity = player.rb.gravityScale;
             Debug.Log("dash entered");
 
-            //DoDash();
             if (player.canDash)
             {
                 player.StartCoroutine(Dash());
@@ -36,6 +35,7 @@ namespace Player
         {
             if (player.isDashing) return;
 
+            player.CheckForJump();
             base.LogicUpdate();
         }
         public override void PhysicsUpdate()
@@ -71,7 +71,6 @@ namespace Player
             else
             {
                 sm.ChangeState(player.idleState);
-
             }
 
             yield return new WaitForSeconds(player.dashCooldown);
