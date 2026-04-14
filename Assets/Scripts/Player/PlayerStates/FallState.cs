@@ -9,6 +9,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
+            player.anim.Play("fall");
             Debug.Log("fall entered");
         }
         public override void Exit()

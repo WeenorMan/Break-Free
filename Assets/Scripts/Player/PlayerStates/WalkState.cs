@@ -10,7 +10,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("walk entered");
+            player.anim.Play("run");
+            //Debug.Log("walk entered");
         }
 
         public override void Exit()
@@ -30,6 +31,11 @@ namespace Player
                 sm.ChangeState(player.idleState);
             }
 
+            /*if (player.rb.linearVelocity.y <= 0f && !player.GetIsGrounded())
+            {
+                sm.ChangeState(player.fallState);
+            }*/
+
             player.CheckForJump();
             player.CheckForDash();
         }
@@ -40,13 +46,6 @@ namespace Player
             base.PhysicsUpdate();
         }
 
-        void CheckForJump()
-        {
-            if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsGrounded())
-            {
-                sm.ChangeState(player.jumpState);
-            }
-        }
 
      
     }

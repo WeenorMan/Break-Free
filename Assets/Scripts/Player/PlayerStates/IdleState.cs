@@ -13,8 +13,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("idle entered");
-
+            //Debug.Log("idle entered");
+            player.anim.Play("idle");
         }
 
         public override void Exit()
@@ -27,26 +27,19 @@ namespace Player
         {
 
             player.CheckForJump();
-            CheckForWalk();
+            player.CheckForWalk();
             player.CheckForDash();
             base.LogicUpdate();
         }
         public override void PhysicsUpdate()
         {
-            player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
+            //player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
             base.PhysicsUpdate();
         }
 
        
 
-        void CheckForWalk()
-        {
-            if (PlayerInputHandler.Instance.moveInput != Vector2.zero)
-            {
-                sm.ChangeState(player.walkState);
-            }
-            
-        }
+       
 
       
 

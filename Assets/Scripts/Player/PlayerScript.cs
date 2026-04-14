@@ -29,9 +29,9 @@ namespace Player
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
         [SerializeField] private float coyoteTime = 0.2f;
-        private float coyoteTimeCounter;
+        [SerializeField] private float coyoteTimeCounter;
         [SerializeField] private float jumpBufferTime = 0.2f;
-        private float jumpBufferCounter;
+        [SerializeField] private float jumpBufferCounter;
 
         [Header("Dash Settings")]
         public float dashDuration = 0.2f;
@@ -143,11 +143,22 @@ namespace Player
         {
             if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
             {
+                Debug.Log("coyote time jump = " + coyoteTimeCounter);
+
                 coyoteTimeCounter = 0;
                 jumpBufferCounter = 0;
 
+
                 sm.ChangeState(jumpState);
             }
+        }
+        public void CheckForWalk()
+        {
+            if (PlayerInputHandler.Instance.moveInput != Vector2.zero)
+            {
+                sm.ChangeState(walkState);
+            }
+
         }
 
         public void Flip()

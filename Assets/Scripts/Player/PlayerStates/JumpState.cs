@@ -14,7 +14,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
+            player.anim.Play("jump");
             player.rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
 
             initVelocity = player.rb.linearVelocity.x;
