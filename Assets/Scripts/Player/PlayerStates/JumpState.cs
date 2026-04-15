@@ -16,6 +16,8 @@ namespace Player
             base.Enter();
             //Debug.Log("Jump");
             player.anim.Play("jump");
+            player.rb.linearVelocity = new Vector2 (player.rb.linearVelocity.x, 0);
+
             player.rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
 
             initVelocity = player.rb.linearVelocity.x;
@@ -36,11 +38,8 @@ namespace Player
                 sm.ChangeState(player.idleState);
             }
 
-            if (player.rb.linearVelocity.y <= 0f && !player.GetIsGrounded())
-            {
-                sm.ChangeState(player.fallState);
-            }
 
+            player.CheckForFall();
             player.CheckForDash();
 
             base.LogicUpdate();

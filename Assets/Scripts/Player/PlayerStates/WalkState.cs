@@ -37,6 +37,7 @@ namespace Player
             }*/
 
             player.CheckForJump();
+            player.CheckForFall();
             player.CheckForDash();
         }
 

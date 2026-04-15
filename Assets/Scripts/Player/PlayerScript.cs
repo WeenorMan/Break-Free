@@ -28,7 +28,7 @@ namespace Player
         [SerializeField] public float lowJumpMultiplier = 2f;
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
-        [SerializeField] private float coyoteTime = 0.2f;
+        [SerializeField] public float coyoteTime = 0.2f;
         [SerializeField] private float coyoteTimeCounter;
         [SerializeField] private float jumpBufferTime = 0.2f;
         [SerializeField] private float jumpBufferCounter;
@@ -152,6 +152,15 @@ namespace Player
                 sm.ChangeState(jumpState);
             }
         }
+
+        public void CheckForFall()
+        {
+            if (rb.linearVelocity.y <= 0f && !GetIsGrounded())
+            {
+                sm.ChangeState(fallState);
+            }
+        }
+
         public void CheckForWalk()
         {
             if (PlayerInputHandler.Instance.moveInput != Vector2.zero)

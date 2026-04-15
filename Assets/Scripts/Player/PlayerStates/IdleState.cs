@@ -13,7 +13,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            //Debug.Log("idle entered");
+            player.rb.linearVelocity = new Vector2 (0, 0);
+
             player.anim.Play("idle");
         }
 
@@ -36,12 +37,5 @@ namespace Player
             //player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
             base.PhysicsUpdate();
         }
-
-       
-
-       
-
-      
-
     }
 }

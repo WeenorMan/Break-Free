@@ -22,6 +22,7 @@ namespace Player
 
             CheckForLand();
             player.CheckForDash();
+            player.CheckForJump();
             base.LogicUpdate();
         }
 
@@ -38,7 +39,6 @@ namespace Player
                 player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
             }
 
-            player.anim.SetFloat("yVelocity", player.rb.linearVelocity.y);
         }
 
         void CheckForLand()
