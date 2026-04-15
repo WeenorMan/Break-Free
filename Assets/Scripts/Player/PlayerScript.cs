@@ -17,12 +17,18 @@ namespace Player
 
         public TMPro.TextMeshProUGUI stateText;
 
-        [Header("Box Cast Settings")]
-        public Vector2 boxSize;
-        [SerializeField] private float castDistance;
+        [Header("Wall/Ground Check Settings")]
+        [SerializeField] private Transform groundCheckPos;
+        [SerializeField] private Vector2 groundCheckSize = new Vector2 (0.49f, 0.03f);
+        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private Transform wallCheckPos;
+        [SerializeField] private Vector2 wallCheckSize = new Vector2(0.49f, 0.03f);
+        [SerializeField] private LayerMask wallLayer;
 
         [Header("Movement Settings")]
         [SerializeField] public float walkSpeed = 3f;
+        [SerializeField] public float wallSlideSpeed = 2f;
+
         
         [Header("Jump Settings")]
         [SerializeField] public float lowJumpMultiplier = 2f;
@@ -50,18 +56,13 @@ namespace Player
         public WalkState walkState;
         public FallState fallState;
         public DashState dashState;
+        public WallJumpState wallJumpState;
 
         private void Awake()
-        {
-           
-        }
-
-        private void Start()
         {
             sm = gameObject.AddComponent<StateMachine>();
             anim = transform.GetChild(0).GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
-            isGrounded = true;
 
             // add new states here
             idleState = new IdleState(this, sm);
@@ -69,20 +70,21 @@ namespace Player
             walkState = new WalkState(this, sm);
             fallState = new FallState(this, sm);
             dashState = new DashState(this, sm);
-
-            isFacingRight = true;
+            wallJumpState = new WallJumpState(this, sm);
 
             sm.Init(idleState);
+        }
+
+        private void Start()
+        {
+            isGrounded = true;
+            isFacingRight = true;
         }
 
         private void FixedUpdate()
         {
             sm.CurrentState.PhysicsUpdate();
-
             if (rb == null) return;
-
-           
-            
         }
         void Update()
         {
@@ -113,7 +115,7 @@ namespace Player
         }
         public bool GetIsGrounded()
         {
-            if(Physics2D.BoxCast(transform.position, boxSize,0, -transform.up, castDistance, LayerMask.GetMask("Ground")))
+            if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
             {
                 inAir = false;
                 return true;
@@ -123,12 +125,33 @@ namespace Player
                 inAir = true;
                 return false;
             }
-            //return Physics2D.Raycast(transform.position, Vector2.down, 0.75f, LayerMask.GetMask("Ground"));
         }
 
+        public bool GetIsOnWall()
+        {
+
+            if(Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, wallLayer))
+            {
+                Debug.Log("wall touched");
+
+                return true;
+            }
+            else
+            {
+                Debug.Log("GIMP");
+
+                return false;
+            }
+        }
+        
         private void OnDrawGizmos()
         {
-            Gizmos.DrawWireCube(transform.position - transform.up * castDistance, boxSize);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(groundCheckPos.position,groundCheckSize);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube(wallCheckPos.position, wallCheckSize);
+
         }
 
         public void CheckForDash()

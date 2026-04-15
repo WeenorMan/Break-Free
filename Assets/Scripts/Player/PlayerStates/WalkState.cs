@@ -10,7 +10,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.anim.Play("run");
+            anim.Play("run");
             //Debug.Log("walk entered");
         }
 
@@ -23,8 +23,8 @@ namespace Player
         {
             base.LogicUpdate();
            
-            player.rb.linearVelocity = new Vector2(PlayerInputHandler.Instance.moveInput.x * player.walkSpeed,
-            player.rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(PlayerInputHandler.Instance.moveInput.x * player.walkSpeed,
+            rb.linearVelocity.y);
 
             if (PlayerInputHandler.Instance.moveInput == Vector2.zero)
             {
@@ -43,7 +43,7 @@ namespace Player
 
         public override void PhysicsUpdate()
         {
-            player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
+            anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
             base.PhysicsUpdate();
         }
 

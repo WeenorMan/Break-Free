@@ -13,9 +13,9 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.rb.linearVelocity = new Vector2 (0, 0);
+            rb.linearVelocity = new Vector2 (0, 0);
 
-            player.anim.Play("idle");
+            anim.Play("idle");
         }
 
         public override void Exit()

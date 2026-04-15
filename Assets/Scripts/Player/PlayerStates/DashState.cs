@@ -16,8 +16,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.anim.Play("dash");
-            player.gravity = player.rb.gravityScale;
+            anim.Play("dash");
+            player.gravity = rb.gravityScale;
             Debug.Log("dash entered");
 
             if (player.canDash)
@@ -29,7 +29,7 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
-            player.rb.linearVelocity = new Vector2(player.rb.linearVelocity.x * 0.1f, player.rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x * 0.1f, rb.linearVelocity.y);
         }
         public override void LogicUpdate()
         {
@@ -53,15 +53,13 @@ namespace Player
             player.isDashing = true;
 
             float originalGravity = player.rb.gravityScale;
-            player.rb.gravityScale = 0f;
-            player.rb.linearVelocity = new Vector2(player.transform.localScale.x * player.dashSpeed, 0f);
-            player.anim.SetBool("isDashing", true);
+            rb.gravityScale = 0f;
+            rb.linearVelocity = new Vector2(player.transform.localScale.x * player.dashSpeed, 0f);
 
 
             yield return new WaitForSeconds(player.dashDuration);
-            player.rb.gravityScale = originalGravity;
+            rb.gravityScale = originalGravity;
             player.isDashing = false;
-            player.anim.SetBool("isDashing", false);
 
 
             if (!player.GetIsGrounded())

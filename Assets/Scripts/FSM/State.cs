@@ -6,13 +6,16 @@ namespace Player
     {
         protected PlayerScript player;
         protected StateMachine sm;
-
+        protected Animator anim;
+        protected Rigidbody2D rb;
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)
         {
             this.player = player;
             this.sm = sm;
+            this.anim = player.anim;
+            this.rb = player.rb;
         }
 
         // These methods are common to all states
