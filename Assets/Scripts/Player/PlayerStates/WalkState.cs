@@ -10,13 +10,14 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            anim.Play("run");
+            anim.Play("Run");
             //Debug.Log("walk entered");
         }
 
         public override void Exit()
         {
             base.Exit();
+
         }
 
         public override void LogicUpdate()
@@ -35,7 +36,7 @@ namespace Player
             {
                 sm.ChangeState(player.fallState);
             }*/
-
+            player.Flip();
             player.CheckForJump();
             player.CheckForFall();
             player.CheckForDash();
@@ -43,7 +44,6 @@ namespace Player
 
         public override void PhysicsUpdate()
         {
-            anim.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
             base.PhysicsUpdate();
         }
 

@@ -8,6 +8,7 @@ namespace Player
         protected StateMachine sm;
         protected Animator anim;
         protected Rigidbody2D rb;
+        
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)

@@ -111,7 +111,7 @@ namespace Player
             Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
 
             stateText.text = "State: " + sm.CurrentState;
-            Flip();
+            //Flip();
         }
         public bool GetIsGrounded()
         {
@@ -138,7 +138,7 @@ namespace Player
             }
             else
             {
-                Debug.Log("GIMP");
+                Debug.Log("not touch");
 
                 return false;
             }
@@ -166,7 +166,7 @@ namespace Player
         {
             if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
             {
-                Debug.Log("coyote time jump = " + coyoteTimeCounter);
+                //Debug.Log("coyote time jump = " + coyoteTimeCounter);
 
                 coyoteTimeCounter = 0;
                 jumpBufferCounter = 0;
@@ -195,13 +195,25 @@ namespace Player
 
         public void Flip()
         {
-            if(isFacingRight && PlayerInputHandler.Instance.moveInput.x < 0 || !isFacingRight && PlayerInputHandler.Instance.moveInput.x  > 0)
+            if (isFacingRight && PlayerInputHandler.Instance.moveInput.x < 0 || !isFacingRight && PlayerInputHandler.Instance.moveInput.x > 0)
             {
                 Vector3 localScale = transform.localScale;
                 isFacingRight = !isFacingRight;
+
                 localScale.x *= -1f;
+
                 transform.localScale = localScale;
             }
+        }
+
+        public void ForceFlip()
+        {
+            Vector3 localScale = transform.localScale;
+            isFacingRight = !isFacingRight;
+
+            localScale.x *= -1f;
+
+            transform.localScale = localScale;
         }
 
     }

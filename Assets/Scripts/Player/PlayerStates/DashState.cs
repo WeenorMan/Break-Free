@@ -16,7 +16,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            anim.Play("dash");
+            anim.Play("Dash");
             player.gravity = rb.gravityScale;
             Debug.Log("dash entered");
 

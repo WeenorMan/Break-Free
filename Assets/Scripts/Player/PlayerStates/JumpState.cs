@@ -14,7 +14,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            anim.Play("jump");
+            anim.Play("Jump");
             rb.linearVelocity = new Vector2 (rb.linearVelocity.x, 0);
 
             rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
@@ -25,20 +25,22 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
+
         }
 
         public override void LogicUpdate()
         {
             if(PlayerInputHandler.Instance.jumpTriggered && player.GetIsOnWall())
             {
-                sm.ChangeState(player.wallJumpState);
+                sm.ChangeState(player.wallJumpState); 
+                return;
             }
 
             else if (player.GetIsGrounded() && rb.linearVelocity.y <= 0f)
             {
                 sm.ChangeState(player.idleState);
             }
-
+            player.Flip();
             player.CheckForFall();
             player.CheckForDash();
 

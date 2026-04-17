@@ -1,3 +1,4 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Player
@@ -16,6 +17,8 @@ namespace Player
 
             rb.linearVelocity = Vector2.zero;
             rb.linearVelocity = new Vector2(-PlayerInputHandler.Instance.moveInput.x, 1f) * player.jumpForce;
+
+            player.ForceFlip(); //flip player regardless of input state
         }
 
         public override void Exit()

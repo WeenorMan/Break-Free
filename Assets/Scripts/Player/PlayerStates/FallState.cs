@@ -9,8 +9,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            player.anim.Play("fall");
-            Debug.Log("fall entered");
+            anim.Play("Fall");
         }
         public override void Exit()
         {
@@ -18,9 +17,16 @@ namespace Player
         }
         public override void LogicUpdate()
         {
-            player.anim.SetBool("isJumping", !player.GetIsGrounded());
+            //player.anim.SetBool("isJumping", !player.GetIsGrounded());
+
+            if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsOnWall())
+            {
+                sm.ChangeState(player.wallJumpState);
+                return;
+            }
 
             CheckForLand();
+            player.Flip();
             player.CheckForDash();
             player.CheckForJump();
             base.LogicUpdate();

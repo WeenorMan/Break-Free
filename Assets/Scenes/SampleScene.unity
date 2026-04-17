@@ -2060,7 +2060,7 @@ MonoBehaviour:
   isFacingRight: 0
   stateText: {fileID: 152777720}
   groundCheckPos: {fileID: 540770676}
-  groundCheckSize: {x: 0.56, y: 0.03}
+  groundCheckSize: {x: 0.39, y: 0.03}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
