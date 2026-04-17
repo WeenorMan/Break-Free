@@ -8,6 +8,7 @@ namespace Player
     public class PlayerScript : MonoBehaviour
     {
         #region Core Variables
+        public PlayerInputHandler inputHandler;
         public StateMachine sm;
         public Animator anim;
         public Rigidbody2D rb;
@@ -27,8 +28,7 @@ namespace Player
 
         [Header("Movement Settings")]
         [SerializeField] public float walkSpeed = 3f;
-        [SerializeField] public float wallSlideSpeed = 2f;
-
+        [SerializeField] public int facingDirection = 1;
         
         [Header("Jump Settings")]
         [SerializeField] public float lowJumpMultiplier = 2f;
@@ -57,10 +57,21 @@ namespace Player
         public FallState fallState;
         public DashState dashState;
         public WallJumpState wallJumpState;
+        public WallSlideState wallSlideState;
 
         private void Awake()
         {
             sm = gameObject.AddComponent<StateMachine>();
+            
+            if (PlayerInputHandler.Instance != null)
+            {
+                inputHandler = PlayerInputHandler.Instance;
+            }
+            else
+            {
+                GameObject inputHost = new GameObject("PlayerInputHandler");
+                inputHandler = inputHost.AddComponent<PlayerInputHandler>();
+            }
             anim = transform.GetChild(0).GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
 
@@ -71,6 +82,7 @@ namespace Player
             fallState = new FallState(this, sm);
             dashState = new DashState(this, sm);
             wallJumpState = new WallJumpState(this, sm);
+            wallSlideState = new WallSlideState(this, sm);
 
             sm.Init(idleState);
         }
@@ -97,7 +109,7 @@ namespace Player
                 coyoteTimeCounter -= Time.deltaTime;
             }
 
-            if (PlayerInputHandler.Instance.jumpTriggered)
+            if (inputHandler.jumpTriggered)
             {
                 jumpBufferCounter = jumpBufferTime;
             }
@@ -156,7 +168,7 @@ namespace Player
 
         public void CheckForDash()
         {
-            if (PlayerInputHandler.Instance.dashTriggered && canDash)
+            if (inputHandler.dashTriggered && canDash)
             {
                 sm.ChangeState(dashState);
             }
@@ -186,24 +198,27 @@ namespace Player
 
         public void CheckForWalk()
         {
-            if (PlayerInputHandler.Instance.moveInput != Vector2.zero)
+            if (inputHandler.moveInput != Vector2.zero)
             {
                 sm.ChangeState(walkState);
             }
 
         }
 
+       
+
         public void Flip()
         {
-            if (isFacingRight && PlayerInputHandler.Instance.moveInput.x < 0 || !isFacingRight && PlayerInputHandler.Instance.moveInput.x > 0)
+            if(inputHandler.moveInput.x > 0.1f)
             {
-                Vector3 localScale = transform.localScale;
-                isFacingRight = !isFacingRight;
-
-                localScale.x *= -1f;
-
-                transform.localScale = localScale;
+                facingDirection = 1;
             }
+            else if (inputHandler.moveInput.x < -0.1f)
+            {
+                facingDirection = -1;
+            }
+
+            transform.localScale = new Vector3(facingDirection, 1f, 1f);
         }
 
         public void ForceFlip()

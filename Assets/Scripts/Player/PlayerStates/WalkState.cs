@@ -24,10 +24,10 @@ namespace Player
         {
             base.LogicUpdate();
            
-            rb.linearVelocity = new Vector2(PlayerInputHandler.Instance.moveInput.x * player.walkSpeed,
+            rb.linearVelocity = new Vector2(inputHandler.moveInput.x * player.walkSpeed,
             rb.linearVelocity.y);
 
-            if (PlayerInputHandler.Instance.moveInput == Vector2.zero)
+            if (inputHandler.moveInput == Vector2.zero)
             {
                 sm.ChangeState(player.idleState);
             }

@@ -30,7 +30,13 @@ namespace Player
 
         public override void LogicUpdate()
         {
-            if(PlayerInputHandler.Instance.jumpTriggered && player.GetIsOnWall())
+            if(!player.GetIsGrounded() && player.GetIsOnWall() && inputHandler.moveInput.x == player.facingDirection && rb.linearVelocity.y < 0.1f)
+            {
+                sm.ChangeState(player.wallSlideState);
+                return;
+            } 
+
+            else if(inputHandler.jumpTriggered && player.GetIsOnWall())
             {
                 sm.ChangeState(player.wallJumpState); 
                 return;
@@ -40,6 +46,7 @@ namespace Player
             {
                 sm.ChangeState(player.idleState);
             }
+
             player.Flip();
             player.CheckForFall();
             player.CheckForDash();
@@ -49,15 +56,15 @@ namespace Player
 
         public override void PhysicsUpdate()
         {
-            bool jumpHeld = PlayerInputHandler.Instance != null && PlayerInputHandler.Instance.jumpHeld;
+            bool jumpHeld = inputHandler != null && inputHandler.jumpHeld;
             if (rb.linearVelocity.y > 0f && !jumpHeld)
             {
                 rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
             }
 
-            if (PlayerInputHandler.Instance != null)
+            if (inputHandler != null)
             {
-                float inputX = PlayerInputHandler.Instance.moveInput.x;
+                float inputX = inputHandler.moveInput.x;
                 rb.linearVelocity = new Vector2(inputX * player.walkSpeed, rb.linearVelocity.y);
             }
 

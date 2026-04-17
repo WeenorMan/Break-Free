@@ -8,7 +8,7 @@ namespace Player
         protected StateMachine sm;
         protected Animator anim;
         protected Rigidbody2D rb;
-        
+        protected PlayerInputHandler inputHandler;
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)
@@ -17,6 +17,7 @@ namespace Player
             this.sm = sm;
             this.anim = player.anim;
             this.rb = player.rb;
+            this.inputHandler = player.inputHandler;
         }
 
         // These methods are common to all states

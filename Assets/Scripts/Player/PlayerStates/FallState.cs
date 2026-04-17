@@ -17,15 +17,24 @@ namespace Player
         }
         public override void LogicUpdate()
         {
-            //player.anim.SetBool("isJumping", !player.GetIsGrounded());
 
-            if (PlayerInputHandler.Instance.jumpTriggered && player.GetIsOnWall())
+            if (!player.GetIsGrounded() && player.GetIsOnWall() && inputHandler.moveInput.x == player.facingDirection && rb.linearVelocity.y < 0.1f)
+            {
+                sm.ChangeState(player.wallSlideState);
+                return;
+            }
+
+            else if (inputHandler.jumpTriggered && player.GetIsOnWall())
             {
                 sm.ChangeState(player.wallJumpState);
                 return;
             }
 
-            CheckForLand();
+            else if (player.GetIsGrounded())
+            {
+                sm.ChangeState(player.idleState);
+            }
+
             player.Flip();
             player.CheckForDash();
             player.CheckForJump();
@@ -39,21 +48,15 @@ namespace Player
                 player.rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.fallMultiplier - 1f) * Time.fixedDeltaTime;
             }
 
-            if (PlayerInputHandler.Instance != null)
+            if (inputHandler != null)
             {
-                float inputX = PlayerInputHandler.Instance.moveInput.x;
+                float inputX = inputHandler.moveInput.x;
                 player.rb.linearVelocity = new Vector2(inputX * player.walkSpeed, player.rb.linearVelocity.y);
             }
 
         }
 
-        void CheckForLand()
-        {
-            if (player.GetIsGrounded())
-            {
-                sm.ChangeState(player.idleState);
-            }
-        }
+        
 
    
     }
