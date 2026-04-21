@@ -876,7 +876,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.7205822, y: 1.27133, z: -11.88}
+  m_LocalPosition: {x: -0.71947974, y: 1.1500801, z: -11.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2100,7 +2100,7 @@ MonoBehaviour:
   groundCheckSize: {x: 0.39, y: 0.03}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   wallCheckPos: {fileID: 436834198}
   wallCheckSize: {x: 0.05, y: 0.99}
   wallLayer:
