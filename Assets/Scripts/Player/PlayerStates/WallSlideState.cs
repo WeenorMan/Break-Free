@@ -15,6 +15,8 @@ namespace Player
         {
             base.Enter();
             anim.Play("WallSlide");
+
+            //player.ForceFlip();
         }
 
         public override void Exit()
@@ -25,11 +27,19 @@ namespace Player
 
         public override void LogicUpdate()
         {
-            if (player.GetIsGrounded())
+            if (inputHandler.jumpTriggered && player.GetIsOnWall())
+            {
+                sm.ChangeState(player.wallJumpState);
+                return;
+            }
+
+            else if (player.GetIsGrounded())
             {
                 sm.ChangeState(player.idleState);
             }
-            
+
+            player.CheckForDash();
+
 
             base.LogicUpdate();
         }

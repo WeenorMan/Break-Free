@@ -30,11 +30,21 @@ namespace Player
 
         public override void LogicUpdate()
         {
-            if(!player.GetIsGrounded() && player.GetIsOnWall() && inputHandler.moveInput.x == player.facingDirection && rb.linearVelocity.y < 0.1f)
+            if (player.GetIsGrounded() == false)
             {
-                sm.ChangeState(player.wallSlideState);
-                return;
-            } 
+                if (player.GetIsOnWall() == true)
+                {
+                    if ((inputHandler.moveInput.x > 0 && player.facingDirection == 1) || (inputHandler.moveInput.x < 0 && player.facingDirection == -1))
+                    {
+                        if (rb.linearVelocity.y < 0.1f)
+                        {
+                            sm.ChangeState(player.wallSlideState);
+                            return;
+                        }
+
+                    }
+                }
+            }
 
             else if(inputHandler.jumpTriggered && player.GetIsOnWall())
             {
