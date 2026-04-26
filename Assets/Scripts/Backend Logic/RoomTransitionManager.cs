@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class RoomTransitionManager : MonoBehaviour
 {
+    [SerializeField] private ScreenFader screenFader;
+    [SerializeField] private CameraManager cameraManager;
     private string currentRoom = "";
 
     void Start()
@@ -18,6 +20,7 @@ public class RoomTransitionManager : MonoBehaviour
 
     private IEnumerator Transition(string sceneName, string spawnID)
     {
+        yield return screenFader.Fade(0f, 1f, 0.5f);
         if (!string.IsNullOrEmpty(currentRoom))
         {
             yield return SceneManager.UnloadSceneAsync(currentRoom);
@@ -33,6 +36,11 @@ public class RoomTransitionManager : MonoBehaviour
         }
         currentRoom = SceneManager.GetActiveScene().name;
         SetupRoom(spawnID);
+        SetupCameraConfiner();
+
+        yield return new WaitForSeconds(0.3f);
+        yield return screenFader.Fade(1f, 0f, 1f);
+
     }
 
     private void SetupRoom(string spawnID)
@@ -52,5 +60,11 @@ public class RoomTransitionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void SetupCameraConfiner()
+    {
+        CameraConfinerProvider provider = FindFirstObjectByType<CameraConfinerProvider>();
+        cameraManager.SetConfiner(provider.confiner);
     }
 }

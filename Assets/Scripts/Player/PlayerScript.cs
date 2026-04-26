@@ -122,7 +122,7 @@ namespace Player
 
             Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
 
-            stateText.text = "State: " + sm.CurrentState;
+            //stateText.text = "State: " + sm.CurrentState;
             //Flip();
         }
         public bool GetIsGrounded()
