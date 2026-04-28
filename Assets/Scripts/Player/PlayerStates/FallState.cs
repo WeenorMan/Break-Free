@@ -3,6 +3,8 @@ namespace Player
 {
     public class FallState : State
     {
+        private float fallSpeed = 20f;
+
         public FallState(PlayerScript player, StateMachine sm) : base(player, sm)
         {
         }
@@ -34,13 +36,6 @@ namespace Player
                 }
             }
 
-            /*
-            if (!player.GetIsGrounded() && player.GetIsOnWall() && inputHandler.moveInput.x == player.facingDirection && rb.linearVelocity.y < 0.1f)
-            {
-                return;
-            }
-            */
-
 
             else if (inputHandler.jumpTriggered && player.GetIsOnWall())
             {
@@ -61,6 +56,11 @@ namespace Player
 
         public override void PhysicsUpdate()
         {
+            if (rb.linearVelocity.y < -Mathf.Abs(fallSpeed))
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, Mathf.Clamp(rb.linearVelocity.y, -Mathf.Abs(fallSpeed), Mathf.Infinity));
+            }
+
             if (player.rb.linearVelocity.y <= 0f && !player.GetIsGrounded())
             {
                 player.rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.fallMultiplier - 1f) * Time.fixedDeltaTime;
@@ -73,9 +73,6 @@ namespace Player
             }
 
         }
-
-        
-
    
     }
 }

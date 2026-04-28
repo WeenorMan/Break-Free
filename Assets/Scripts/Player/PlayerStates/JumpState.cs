@@ -15,7 +15,7 @@ namespace Player
         {
             base.Enter();
             anim.Play("Jump");
-            rb.linearVelocity = new Vector2 (rb.linearVelocity.x, 0);
+            //rb.linearVelocity = new Vector2 (rb.linearVelocity.x, 0);
 
             rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
 
@@ -69,7 +69,8 @@ namespace Player
             bool jumpHeld = inputHandler != null && inputHandler.jumpHeld;
             if (rb.linearVelocity.y > 0f && !jumpHeld)
             {
-                rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+                //rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (player.lowJumpMultiplier - 1f) * Time.fixedDeltaTime;
             }
 
             if (inputHandler != null)

@@ -4,7 +4,7 @@ namespace Player
 {
     public class WallSlideState : State
     {
-        private float wallSlideSpeed = -2f;
+        private float wallSlideSpeed = -4f;
 
         // constructor
         public WallSlideState(PlayerScript player, StateMachine sm) : base(player, sm)

@@ -35,9 +35,6 @@ namespace Player
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
         [SerializeField] public float coyoteTime = 0.2f;
-        [SerializeField] private float normalGravity;
-        [SerializeField] private float fallGravity;
-        [SerializeField] private float jumpGravity;
         [SerializeField] private float coyoteTimeCounter;
         [SerializeField] private float jumpBufferTime = 0.2f;
         [SerializeField] private float jumpBufferCounter;
@@ -130,21 +127,7 @@ namespace Player
             //Flip();
         }
 
-        /*public void ApplyVariableGravity()
-        {
-            if(rb.linearVelocity.y < -0.1f)
-            {
-                rb.gravityScale = fallGravity;
-            }
-            else if (rb.linearVelocity.y > 0.1f)
-            {
-                rb.gravityScale = jumpGravity;
-            }
-            else
-            {
-                rb.gravityScale = normalGravity;
-            }
-        }*/
+        
 
         public bool GetIsGrounded()
         {
@@ -176,6 +159,7 @@ namespace Player
                 return false;
             }
         }
+
         
         private void OnDrawGizmos()
         {
@@ -204,7 +188,6 @@ namespace Player
                 coyoteTimeCounter = 0;
                 jumpBufferCounter = 0;
 
-
                 sm.ChangeState(jumpState);
             }
         }
@@ -225,8 +208,6 @@ namespace Player
             }
 
         }
-
-       
 
         public void Flip()
         {
