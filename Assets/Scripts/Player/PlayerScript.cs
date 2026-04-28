@@ -35,6 +35,9 @@ namespace Player
         [SerializeField] public float jumpForce = 5f;
         [SerializeField] public float fallMultiplier = 2f;
         [SerializeField] public float coyoteTime = 0.2f;
+        [SerializeField] private float normalGravity;
+        [SerializeField] private float fallGravity;
+        [SerializeField] private float jumpGravity;
         [SerializeField] private float coyoteTimeCounter;
         [SerializeField] private float jumpBufferTime = 0.2f;
         [SerializeField] private float jumpBufferCounter;
@@ -89,7 +92,8 @@ namespace Player
 
         private void Start()
         {
-            isGrounded = true;
+            //rb.gravityScale = normalGravity;
+            //isGrounded = true;
             isFacingRight = true;
         }
 
@@ -125,6 +129,23 @@ namespace Player
             //stateText.text = "State: " + sm.CurrentState;
             //Flip();
         }
+
+        /*public void ApplyVariableGravity()
+        {
+            if(rb.linearVelocity.y < -0.1f)
+            {
+                rb.gravityScale = fallGravity;
+            }
+            else if (rb.linearVelocity.y > 0.1f)
+            {
+                rb.gravityScale = jumpGravity;
+            }
+            else
+            {
+                rb.gravityScale = normalGravity;
+            }
+        }*/
+
         public bool GetIsGrounded()
         {
             if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))

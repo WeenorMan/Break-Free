@@ -21,7 +21,7 @@ namespace Player
 
         public override void Exit()
         {
-
+            
             base.Exit();
         }
 
@@ -31,6 +31,11 @@ namespace Player
             {
                 sm.ChangeState(player.wallJumpState);
                 return;
+            }
+
+            else if(!player.GetIsGrounded() && !player.GetIsOnWall())
+            {
+                sm.ChangeState(player.fallState);
             }
 
             else if (player.GetIsGrounded())

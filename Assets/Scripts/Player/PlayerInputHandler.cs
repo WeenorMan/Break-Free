@@ -99,13 +99,13 @@ namespace Player
 
             if (jumpAction != null)
             {
-                jumpReleased = jumpAction.WasReleasedThisFrame();
                 jumpTriggered = jumpAction.WasPerformedThisFrame();
+                jumpReleased = jumpAction.WasReleasedThisFrame();
             }
             else
             {
-                jumpReleased = false;
                 jumpTriggered = false;
+                jumpReleased = false;
             }
         }
         private void OnEnable()
