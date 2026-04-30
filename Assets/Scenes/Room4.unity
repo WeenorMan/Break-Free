@@ -448,7 +448,7 @@ Transform:
   m_GameObject: {fileID: 453341882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.33, y: 2.06, z: 0}
+  m_LocalPosition: {x: 2.33, y: 2.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -466,7 +466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b10a84f8682f5458cd045caa81fe45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
-  spawnID: DoorB
+  spawnID: DoorA
 --- !u!1 &557292116
 GameObject:
   m_ObjectHideFlags: 0
@@ -4613,7 +4613,7 @@ GameObject:
   - component: {fileID: 1342491904}
   - component: {fileID: 1342491903}
   m_Layer: 0
-  m_Name: DoorB
+  m_Name: DoorA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4631,7 +4631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c8387b4ba5a6aa4bab0c7deef980aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  targetScene: Room4
+  targetScene: Room2
   spawnID: DoorC
 --- !u!61 &1342491904
 BoxCollider2D:
