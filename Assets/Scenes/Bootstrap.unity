@@ -914,7 +914,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
-  walkSpeed: 3
+  walkSpeed: 4.5
   facingDirection: 1
   lowJumpMultiplier: 4
   jumpForce: 10

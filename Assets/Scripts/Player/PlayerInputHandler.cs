@@ -17,6 +17,7 @@ namespace Player
         [SerializeField] private string jump = "Jump";
         [SerializeField] private string sprint = "Sprint";
         [SerializeField] private string dash = "Dash";
+        [SerializeField] private string attack = "Attack";
 
 
         private InputAction moveAction;
@@ -24,6 +25,7 @@ namespace Player
         private InputAction jumpAction;
         private InputAction sprintAction;
         private InputAction dashAction;
+        private InputAction attackAction;
 
         public Vector2 moveInput { get; private set; }
         public Vector2 lookInput { get; private set; }
@@ -33,6 +35,7 @@ namespace Player
         public float sprintValue { get; private set; }
         public bool dashTriggered { get; private set; }
         public bool dashReleased { get; private set; }
+        public bool attackTriggered { get; private set; }
 
 
         public static PlayerInputHandler Instance { get; private set; }
@@ -59,6 +62,7 @@ namespace Player
             jumpAction = playerControls.FindActionMap(actionMapName).FindAction(jump);
             sprintAction = playerControls.FindActionMap(actionMapName).FindAction(sprint);
             dashAction = playerControls.FindActionMap(actionMapName).FindAction(dash);
+            attackAction = playerControls.FindActionMap(actionMapName).FindAction(attack);
             RegisterInputActions();
         }
 
