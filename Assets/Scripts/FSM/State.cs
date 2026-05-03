@@ -9,6 +9,7 @@ namespace Player
         protected Animator anim;
         protected Rigidbody2D rb;
         protected PlayerInputHandler inputHandler;
+        protected PlayerCombat combat;
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)
@@ -18,29 +19,17 @@ namespace Player
             this.anim = player.anim;
             this.rb = player.rb;
             this.inputHandler = player.inputHandler;
+            combat = player.combat; 
         }
 
         // These methods are common to all states
-        public virtual void Enter()
-        {
-            //Debug.Log("This is base.enter");
-        }
-
-        public virtual void HandleInput()
-        {
-        }
-
-        public virtual void LogicUpdate()
-        {
-        }
-
-        public virtual void PhysicsUpdate()
-        {
-        }
-
-        public virtual void Exit()
-        {
-        }
+        public virtual void Enter() { }
+        public virtual void HandleInput() { }
+        public virtual void LogicUpdate() { }
+        public virtual void PhysicsUpdate() { }
+        public virtual void AttackAnimationFinished() { }
+        public virtual void Exit() { }
+        
 
     }
 

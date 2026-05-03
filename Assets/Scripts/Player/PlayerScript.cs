@@ -8,12 +8,12 @@ namespace Player
     public class PlayerScript : MonoBehaviour
     {
         #region Core Variables
+        [Header("Core Components")]
         public PlayerInputHandler inputHandler;
         public StateMachine sm;
         public Animator anim;
         public Rigidbody2D rb;
-        public bool isGrounded;
-        public bool isFacingRight;
+        public PlayerCombat combat;
         #endregion Core Variables
 
         public TMPro.TextMeshProUGUI stateText;
@@ -25,16 +25,17 @@ namespace Player
         [SerializeField] private Transform wallCheckPos;
         [SerializeField] private Vector2 wallCheckSize = new Vector2(0.49f, 0.03f);
         [SerializeField] private LayerMask wallLayer;
-
+        
+        #region Player Settings
         [Header("Movement Settings")]
-        [SerializeField] public float walkSpeed = 3f;
-        [SerializeField] public int facingDirection = 1;
+        public float walkSpeed = 3f;
+        public int facingDirection = 1;
         
         [Header("Jump Settings")]
-        [SerializeField] public float lowJumpMultiplier = 2f;
-        [SerializeField] public float jumpForce = 5f;
-        [SerializeField] public float fallMultiplier = 2f;
-        [SerializeField] public float coyoteTime = 0.2f;
+        public float lowJumpMultiplier = 2f;
+        public float jumpForce = 5f;
+        public float fallMultiplier = 2f;
+        public float coyoteTime = 0.2f;
         [SerializeField] private float coyoteTimeCounter;
         [SerializeField] private float jumpBufferTime = 0.2f;
         [SerializeField] private float jumpBufferCounter;
@@ -49,6 +50,9 @@ namespace Player
         public bool canDash = true;
         public float gravity;
         public bool inAir;
+        public bool isGrounded;
+        public bool isFacingRight;
+        #endregion Player Settings
 
         // variables holding the different player states
         public IdleState idleState;
@@ -58,11 +62,12 @@ namespace Player
         public DashState dashState;
         public WallJumpState wallJumpState;
         public WallSlideState wallSlideState;
+        public AttackState attackState;
 
         private void Awake()
         {
             sm = gameObject.AddComponent<StateMachine>();
-            
+
             if (PlayerInputHandler.Instance != null)
             {
                 inputHandler = PlayerInputHandler.Instance;
@@ -73,6 +78,16 @@ namespace Player
                 inputHandler = inputHost.AddComponent<PlayerInputHandler>();
             }
             anim = transform.GetChild(0).GetComponent<Animator>();
+            if (anim == null)
+            {
+                Debug.LogError("PlayerScript: Animator not found on child 0! Child name: " + (transform.childCount > 0 ? transform.GetChild(0).name : "NO CHILDREN"));
+            }
+            else
+            {
+                Debug.Log("PlayerScript: Animator found on child: " + transform.GetChild(0).name);
+                if (anim.runtimeAnimatorController == null)
+                    Debug.LogWarning("PlayerScript: Animator has no controller assigned!");
+            }
             rb = GetComponent<Rigidbody2D>();
 
             // add new states here
@@ -83,6 +98,7 @@ namespace Player
             dashState = new DashState(this, sm);
             wallJumpState = new WallJumpState(this, sm);
             wallSlideState = new WallSlideState(this, sm);
+            attackState = new AttackState(this, sm);
 
             sm.Init(idleState);
         }
@@ -123,8 +139,6 @@ namespace Player
 
             Debug.DrawRay(transform.position, Vector2.down * 0.75f, Color.red);
 
-            //stateText.text = "State: " + sm.CurrentState;
-            //Flip();
         }
 
         
@@ -207,6 +221,19 @@ namespace Player
                 sm.ChangeState(walkState);
             }
 
+        }
+
+        /*public void CheckForAttack()
+        {
+            if (inputHandler.attackTriggered)
+            {
+               sm.ChangeState(attackState);
+            }
+        }*/
+
+        public void AttackAnimationFinished()
+        {
+            sm.CurrentState.AttackAnimationFinished();
         }
 
         public void Flip()

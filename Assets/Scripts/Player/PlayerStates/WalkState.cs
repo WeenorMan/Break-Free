@@ -23,19 +23,20 @@ namespace Player
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-           
-            rb.linearVelocity = new Vector2(inputHandler.moveInput.x * player.walkSpeed,
-            rb.linearVelocity.y);
+
+            if (inputHandler.attackTriggered && combat.canAttack)
+            {
+                sm.ChangeState(player.attackState);
+            }
 
             if (inputHandler.moveInput == Vector2.zero)
             {
                 sm.ChangeState(player.idleState);
             }
 
-            /*if (player.rb.linearVelocity.y <= 0f && !player.GetIsGrounded())
-            {
-                sm.ChangeState(player.fallState);
-            }*/
+            rb.linearVelocity = new Vector2(inputHandler.moveInput.x * player.walkSpeed,
+            rb.linearVelocity.y);
+
             player.Flip();
             player.CheckForJump();
             player.CheckForFall();

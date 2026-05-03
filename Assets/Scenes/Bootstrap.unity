@@ -296,6 +296,7 @@ MonoBehaviour:
   jump: Jump
   sprint: Sprint
   dash: Dash
+  attack: Attack
 --- !u!4 &205445604
 Transform:
   m_ObjectHideFlags: 0
@@ -789,6 +790,37 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!1 &523627445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523627446}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523627446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523627445}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.222, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 742200550}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540770675
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +865,7 @@ GameObject:
   - component: {fileID: 742200555}
   - component: {fileID: 742200547}
   - component: {fileID: 742200554}
+  - component: {fileID: 742200556}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -883,6 +916,7 @@ Transform:
   - {fileID: 1727321042}
   - {fileID: 540770676}
   - {fileID: 436834198}
+  - {fileID: 523627446}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &742200552
@@ -899,10 +933,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStateMachine
   inputHandler: {fileID: 0}
   sm: {fileID: 0}
-  anim: {fileID: 0}
+  anim: {fileID: 1727321044}
   rb: {fileID: 742200547}
-  isGrounded: 0
-  isFacingRight: 0
+  combat: {fileID: 1727321045}
   stateText: {fileID: 0}
   groundCheckPos: {fileID: 540770676}
   groundCheckSize: {x: 0.39, y: 0.03}
@@ -931,6 +964,8 @@ MonoBehaviour:
   canDash: 1
   gravity: 0
   inAir: 0
+  isGrounded: 0
+  isFacingRight: 0
 --- !u!61 &742200554
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -991,6 +1026,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomTransitionManager
   screenFader: {fileID: 371650876}
   cameraManager: {fileID: 418498687}
+--- !u!114 &742200556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 742200546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e07b037d257b41b376c49c3cf7d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  health: 0
+  maxHealth: 0
 --- !u!1 &1727321041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,6 +1051,7 @@ GameObject:
   - component: {fileID: 1727321042}
   - component: {fileID: 1727321043}
   - component: {fileID: 1727321044}
+  - component: {fileID: 1727321045}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -1018,7 +1068,7 @@ Transform:
   m_GameObject: {fileID: 1727321041}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.529, z: 0}
+  m_LocalPosition: {x: 0, y: 0.193, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1073,12 +1123,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9221513619699486933, guid: f84456a6656fbab4cbea453d91032626, type: 3}
+  m_Sprite: {fileID: 7110878671101974141, guid: 92da0c4dd566ecb4f92ba36303aa903b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.18, y: 0.3}
+  m_Size: {x: 1.5, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1105,6 +1155,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1727321045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727321041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e834ff857fafdab468c747926e87e223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
+  damage: 3
+  attackRadius: 0.5
+  attackCooldown: 0.3
+  attackPoint: {fileID: 523627446}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  player: {fileID: 742200552}
 --- !u!1 &1786520205
 GameObject:
   m_ObjectHideFlags: 0

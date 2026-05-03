@@ -30,6 +30,8 @@ namespace Player
 
         public override void LogicUpdate()
         {
+
+
             if (player.GetIsGrounded() == false)
             {
                 if (player.GetIsOnWall() == true)

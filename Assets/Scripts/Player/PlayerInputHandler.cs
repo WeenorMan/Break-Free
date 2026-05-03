@@ -83,8 +83,9 @@ namespace Player
             sprintAction.performed += context => sprintValue = context.ReadValue<float>();
             sprintAction.canceled += context => sprintValue = 0f;
 
-            //dashAction.performed += context => dashTriggered = true;
-            // dashAction.canceled += context => dashTriggered = false;
+            attackAction.performed += context => attackTriggered = true; 
+            attackAction.canceled += context => attackTriggered = false;
+
         }
 
         private void Update()
