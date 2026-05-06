@@ -1,0 +1,20 @@
+using UnityEngine;
+
+public abstract class EState 
+{
+    protected Enemy enemy;
+    protected EStateMachine esm;
+    protected Rigidbody2D rb;
+
+    protected EState(Enemy enemy, EStateMachine esm)
+    {
+        this.enemy = enemy;
+        this.esm = esm;
+        this.rb = enemy.RB;
+    }
+
+    public virtual void Enter() { }
+    public virtual void LogicUpdate() { }
+    public virtual void PhysicsUpdate() { }
+    public virtual void Exit() { }
+}

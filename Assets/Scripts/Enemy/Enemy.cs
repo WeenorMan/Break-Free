@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Health health;
+    public Rigidbody2D RB { get; private set; }
+    public EStateMachine ESM { get; private set; }
 
-    private void OnEnable()
+    private void Awake()
     {
-        health.OnDamaged += HandleDamage;
-    }
-    private void OnDisable()
-    {
-        health.OnDamaged -= HandleDamage;
+        RB = GetComponent<Rigidbody2D>();
+        ESM = new EStateMachine();
     }
 
-    void HandleDamage()
+    public void Start()
     {
-
+        ESM.Init(new PatrolState(this, ESM));
     }
+
+    private void Update() => ESM.CurrentState?.LogicUpdate();
+    private void FixedUpdate() => ESM.CurrentState?.PhysicsUpdate();
+
+
+
+
+
 }
