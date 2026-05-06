@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: 45dd23373d9e6ec42826826d8371be70
+guid: bf6e3e627e072bb42acab826c40acf7b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2649847697073447219
-    second: Dead_0
+      213: 3333519553364820122
+    second: EnemyWalk_0
   - first:
-      213: -8293461521501190705
-    second: Dead_1
+      213: 5397656243092601031
+    second: EnemyWalk_1
   - first:
-      213: -1631342717326862633
-    second: Dead_2
+      213: -2061383542819475063
+    second: EnemyWalk_2
   - first:
-      213: -3927913518680497933
-    second: Dead_3
+      213: -886456225449863607
+    second: EnemyWalk_3
   - first:
-      213: -1057675302478342458
-    second: Dead_4
+      213: -8942450185556836452
+    second: EnemyWalk_4
   - first:
-      213: -7954960911384535938
-    second: Dead_5
+      213: 7887131161206726974
+    second: EnemyWalk_5
   - first:
-      213: -1451345828014226549
-    second: Dead_6
+      213: 5475783735209303024
+    second: EnemyWalk_6
+  - first:
+      213: -4638906021341026798
+    second: EnemyWalk_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -69,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -92,7 +95,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -183,155 +186,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dead_0
+      name: EnemyWalk_0
       rect:
         serializedVersion: 2
-        x: 42
+        x: 0
         y: 0
-        width: 38
-        height: 78
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 33123f4e07626c420800000000000000
-      internalID: 2649847697073447219
+      spriteID: 5ea5b4261c837f748a70d01ea466d6b9
+      internalID: 3333519553364820122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_1
+      name: EnemyWalk_1
       rect:
         serializedVersion: 2
-        x: 170
+        x: 48
         y: 0
-        width: 38
-        height: 78
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fc50d84dfa4b7ec80800000000000000
-      internalID: -8293461521501190705
+      spriteID: 831bd9e7851871342a66986647d2839d
+      internalID: 5397656243092601031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_2
+      name: EnemyWalk_2
       rect:
         serializedVersion: 2
-        x: 296
+        x: 96
         y: 0
-        width: 40
-        height: 78
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7d6dfca117e4c59e0800000000000000
-      internalID: -1631342717326862633
+      spriteID: bda9f297707782548b817432b6583622
+      internalID: -2061383542819475063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_3
+      name: EnemyWalk_3
       rect:
         serializedVersion: 2
-        x: 417
+        x: 144
         y: 0
-        width: 47
-        height: 77
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3f0289a377f3d79c0800000000000000
-      internalID: -3927913518680497933
+      spriteID: ad9d3f2a48e29734697466fd5d7c4623
+      internalID: -886456225449863607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_4
+      name: EnemyWalk_4
       rect:
         serializedVersion: 2
-        x: 564
+        x: 192
         y: 0
-        width: 36
-        height: 63
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6c6131c8ae16251f0800000000000000
-      internalID: -1057675302478342458
+      spriteID: 10d53fb44ca64df4d9e1056fd655d684
+      internalID: -8942450185556836452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_5
+      name: EnemyWalk_5
       rect:
         serializedVersion: 2
-        x: 692
+        x: 240
         y: 0
-        width: 40
-        height: 59
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e7c9ec2c23d4a9190800000000000000
-      internalID: -7954960911384535938
+      spriteID: a95ede582ad6a894d955b8cfa71f76bb
+      internalID: 7887131161206726974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dead_6
+      name: EnemyWalk_6
       rect:
         serializedVersion: 2
-        x: 820
+        x: 288
         y: 0
-        width: 72
-        height: 16
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b8387f2b8a8cbdbe0800000000000000
-      internalID: -1451345828014226549
+      spriteID: a190fea8f476a5e41b9f7a80a9130f6f
+      internalID: 5475783735209303024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyWalk_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 219fd9c853027e5498ab317ba56e8a06
+      internalID: -4638906021341026798
       vertices: []
       indices: 
       edges: []
@@ -340,7 +365,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6c77f7bf9315a8745b87ffe81f2b2015
     internalID: 0
     vertices: []
     indices: 
@@ -348,15 +373,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Dead_0: 2649847697073447219
-      Dead_1: -8293461521501190705
-      Dead_2: -1631342717326862633
-      Dead_3: -3927913518680497933
-      Dead_4: -1057675302478342458
-      Dead_5: -7954960911384535938
-      Dead_6: -1451345828014226549
+      EnemyWalk_0: 3333519553364820122
+      EnemyWalk_1: 5397656243092601031
+      EnemyWalk_2: -2061383542819475063
+      EnemyWalk_3: -886456225449863607
+      EnemyWalk_4: -8942450185556836452
+      EnemyWalk_5: 7887131161206726974
+      EnemyWalk_6: 5475783735209303024
+      EnemyWalk_7: -4638906021341026798
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

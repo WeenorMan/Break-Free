@@ -1,25 +1,46 @@
 fileFormatVersion: 2
-guid: 95f9275fe488e1045b6aae9f534e634c
+guid: 5364fc9c0bf821c498f43c6f1e76e9f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6573153088770676971
-    second: Shutdown_0
+      213: 1777587005691222852
+    second: Enemy Death_0
   - first:
-      213: -7986627646646921563
-    second: Shutdown_1
+      213: 7297756188267529895
+    second: Enemy Death_1
   - first:
-      213: 8583169668885191978
-    second: Shutdown_2
+      213: 1278191359774595665
+    second: Enemy Death_2
   - first:
-      213: 8029440490343806359
-    second: Shutdown_3
+      213: -1422515938240686402
+    second: Enemy Death_3
   - first:
-      213: 588155894742025357
-    second: Shutdown_4
+      213: -4651282485361682322
+    second: Enemy Death_4
   - first:
-      213: -3744351027832402412
-    second: Shutdown_5
+      213: -3523634386398211214
+    second: Enemy Death_5
+  - first:
+      213: 1636105150432765524
+    second: Enemy Death_6
+  - first:
+      213: 5720744702807906034
+    second: Enemy Death_7
+  - first:
+      213: 3777905408977604694
+    second: Enemy Death_8
+  - first:
+      213: -1417099024904227630
+    second: Enemy Death_9
+  - first:
+      213: 3234781321169053863
+    second: Enemy Death_10
+  - first:
+      213: -5924212978469622266
+    second: Enemy Death_11
+  - first:
+      213: -7119524926014413366
+    second: Enemy Death_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -66,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -89,7 +110,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -180,133 +201,221 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shutdown_0
+      name: Enemy Death_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b539fa6f14ba810800000000000000
+      internalID: 1777587005691222852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_1
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 38
-        height: 73
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 517ef81871877c4a0800000000000000
-      internalID: -6573153088770676971
+      spriteID: 7a6481b8696d64560800000000000000
+      internalID: 7297756188267529895
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shutdown_1
+      name: Enemy Death_2
       rect:
         serializedVersion: 2
-        x: 176
+        x: 96
         y: 0
-        width: 38
-        height: 73
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a6db48687cc92190800000000000000
-      internalID: -7986627646646921563
+      spriteID: 15a9652054c0db110800000000000000
+      internalID: 1278191359774595665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shutdown_2
+      name: Enemy Death_3
       rect:
         serializedVersion: 2
-        x: 304
+        x: 144
         y: 0
-        width: 37
-        height: 73
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a2d1fc8965b8d1770800000000000000
-      internalID: 8583169668885191978
+      spriteID: eb615dd7a45324ce0800000000000000
+      internalID: -1422515938240686402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shutdown_3
+      name: Enemy Death_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e68550e1933537fb0800000000000000
+      internalID: -4651282485361682322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2731260d139891fc0800000000000000
+      internalID: -3523634386398211214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4566bb247fc94b610800000000000000
+      internalID: 1636105150432765524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f610955ffa246f40800000000000000
+      internalID: 5720744702807906034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 650132904f0dd6430800000000000000
+      internalID: 3777905408977604694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Death_9
       rect:
         serializedVersion: 2
         x: 432
         y: 0
-        width: 35
-        height: 73
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 795b41c859d4e6f60800000000000000
-      internalID: 8029440490343806359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shutdown_4
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 32
-        height: 75
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8486aa8bac892800800000000000000
-      internalID: 588155894742025357
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shutdown_5
-      rect:
-        serializedVersion: 2
-        x: 688
-        y: 0
-        width: 32
-        height: 78
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 41e4eaf1494690cc0800000000000000
-      internalID: -3744351027832402412
+      spriteID: 2d4f709e1f3755ce0800000000000000
+      internalID: -1417099024904227630
       vertices: []
       indices: 
       edges: []
@@ -315,7 +424,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bf9a591da10012c49ad19ac157926278
     internalID: 0
     vertices: []
     indices: 
@@ -323,14 +432,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Shutdown_0: -6573153088770676971
-      Shutdown_1: -7986627646646921563
-      Shutdown_2: 8583169668885191978
-      Shutdown_3: 8029440490343806359
-      Shutdown_4: 588155894742025357
-      Shutdown_5: -3744351027832402412
+      Enemy Death_0: 1777587005691222852
+      Enemy Death_1: 7297756188267529895
+      Enemy Death_2: 1278191359774595665
+      Enemy Death_3: -1422515938240686402
+      Enemy Death_4: -4651282485361682322
+      Enemy Death_5: -3523634386398211214
+      Enemy Death_6: 1636105150432765524
+      Enemy Death_7: 5720744702807906034
+      Enemy Death_8: 3777905408977604694
+      Enemy Death_9: -1417099024904227630
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 98a4a1500b82f2542a1d667042267b29
+guid: a35ac80b972d5dc49b2dd69ce804f805
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 778240012933890447
-    second: Charge_1_0
+      213: -8164023665298854819
+    second: Enemy Sword-Sheet_0
   - first:
-      213: -2023402014011244658
-    second: Charge_1_1
+      213: 4742637937272011314
+    second: Enemy Sword-Sheet_1
   - first:
-      213: 2118197556715995833
-    second: Charge_1_2
+      213: -1361781350251697123
+    second: Enemy Sword-Sheet_2
+  - first:
+      213: -1104589175924040478
+    second: Enemy Sword-Sheet_3
+  - first:
+      213: -6724916072723425026
+    second: Enemy Sword-Sheet_4
+  - first:
+      213: 3278455426284434411
+    second: Enemy Sword-Sheet_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,7 +89,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -171,67 +180,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Charge_1_0
+      name: Enemy Sword-Sheet_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 13
-        height: 7
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f818be02b2ddcca00800000000000000
-      internalID: 778240012933890447
+      spriteID: d5caaf33bbf83be80800000000000000
+      internalID: -8164023665298854819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_1_1
+      name: Enemy Sword-Sheet_1
       rect:
         serializedVersion: 2
-        x: 42
-        y: 8
-        width: 12
-        height: 15
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8fbc05b69e6be3e0800000000000000
-      internalID: -2023402014011244658
+      spriteID: 23ab36d831c31d140800000000000000
+      internalID: 4742637937272011314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charge_1_2
+      name: Enemy Sword-Sheet_2
       rect:
         serializedVersion: 2
-        x: 70
-        y: 2
-        width: 54
-        height: 22
+        x: 128
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b248248479556d10800000000000000
-      internalID: 2118197556715995833
+      spriteID: d1cee74b31bf91de0800000000000000
+      internalID: -1361781350251697123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sword-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ec5e423ff5bba0f0800000000000000
+      internalID: -1104589175924040478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sword-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef85105467c4ca2a0800000000000000
+      internalID: -6724916072723425026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sword-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be3b2a717d96f7d20800000000000000
+      internalID: 3278455426284434411
       vertices: []
       indices: 
       edges: []
@@ -240,7 +315,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2a02a9d81508846449adb3141a05a813
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +323,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Charge_1_0: 778240012933890447
-      Charge_1_1: -2023402014011244658
-      Charge_1_2: 2118197556715995833
+      Enemy Sword-Sheet_0: -8164023665298854819
+      Enemy Sword-Sheet_1: 4742637937272011314
+      Enemy Sword-Sheet_2: -1361781350251697123
+      Enemy Sword-Sheet_3: -1104589175924040478
+      Enemy Sword-Sheet_4: -6724916072723425026
+      Enemy Sword-Sheet_5: 3278455426284434411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
