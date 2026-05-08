@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D RB { get; private set; }
     public EStateMachine ESM { get; private set; }
     public Animator Animator { get; private set; }
+    public EnemyCombat Combat { get; private set; }
     #endregion components
 
     private void Awake()
@@ -22,6 +23,7 @@ public class Enemy : MonoBehaviour
         ESM = new EStateMachine();
         Senses = GetComponent<EnemySenses>();
         Animator = GetComponent<Animator>();
+        Combat = GetComponent<EnemyCombat>();
     }
 
     public void Start()
@@ -31,6 +33,7 @@ public class Enemy : MonoBehaviour
 
     private void Update() => ESM.CurrentState?.LogicUpdate();
     private void FixedUpdate() => ESM.CurrentState?.PhysicsUpdate();
+    public void OnAnimationFinished() => ESM.CurrentState?.OnAnimationFinished();
 
     public void Flip()
     {
@@ -41,6 +44,15 @@ public class Enemy : MonoBehaviour
         transform.localScale = scale;
     }
 
+    public void FaceTarget(Transform target)
+    {
+        float offset = target.position.x - transform.position.x;
+        int direction = offset > 0 ? 1 : -1;
 
+        if(direction != FacingDirection)
+        {
+            Flip();
+        }
+    }
 
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854987af4117f204192a3e871cdcf9e9, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
+  turnThreshold: 0.75
   patrolSpeed: 2
   groundCheckDistance: 0.7
   wallCheckDistance: 0.5
@@ -21,7 +22,13 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
-  chaseRange: 5
+  chaseRange: 3.91
+  chaseSpeed: 4
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
+  meleeRange: 0.4
+  meleeDamage: 16
+  meleeCooldown: 0.76
+  knockbackDuration: 0.2
+  knockbackForce: 14

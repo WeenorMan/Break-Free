@@ -1709,7 +1709,7 @@ Transform:
   m_GameObject: {fileID: 719507288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.684, y: -0.194, z: 0}
+  m_LocalPosition: {x: 0.437, y: -0.086, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3388,9 +3388,12 @@ GameObject:
   - component: {fileID: 1737670186}
   - component: {fileID: 1737670185}
   - component: {fileID: 1737670184}
+  - component: {fileID: 1737670189}
   - component: {fileID: 1737670183}
   - component: {fileID: 1737670188}
-  - component: {fileID: 1737670189}
+  - component: {fileID: 1737670191}
+  - component: {fileID: 1737670192}
+  - component: {fileID: 1737670190}
   m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -3591,6 +3594,47 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1737670190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737670182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e07b037d257b41b376c49c3cf7d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  health: 0
+  maxHealth: 100
+--- !u!114 &1737670191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737670182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e651ca8e4cb540448c500850106e55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCombat
+  attackPoint: {fileID: 719507289}
+--- !u!114 &1737670192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737670182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cffe46acee21c40a4a9d04ba5bd4f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
+  enemy: {fileID: 1737670183}
+  health: {fileID: 1737670190}
 --- !u!1 &1825974580
 GameObject:
   m_ObjectHideFlags: 0

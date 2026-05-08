@@ -861,11 +861,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 742200550}
-  - component: {fileID: 742200552}
-  - component: {fileID: 742200555}
   - component: {fileID: 742200547}
   - component: {fileID: 742200554}
+  - component: {fileID: 742200552}
   - component: {fileID: 742200556}
+  - component: {fileID: 742200555}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
-  maxHealth: 0
+  maxHealth: 100
 --- !u!1 &1727321041
 GameObject:
   m_ObjectHideFlags: 0

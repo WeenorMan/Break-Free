@@ -1,23 +1,24 @@
 using UnityEngine;
 
-public class ChaseState : EState
+public class EnIdleState : EState
 {
     private Transform target;
 
-    public ChaseState(Enemy enemy, EStateMachine esm) : base(enemy, esm)
+    public EnIdleState(Enemy enemy, EStateMachine esm) : base(enemy, esm)
     {
     }
 
     public override void Enter()
     {
         base.Enter();
-        anim.Play("Run");
+        anim.Play("Idle");
+        rb.linearVelocity = Vector2.zero;
+
     }
 
     public override void Exit()
     {
         base.Exit();
-        rb.linearVelocity = Vector2.zero;
     }
 
     public override void LogicUpdate()
@@ -47,21 +48,21 @@ public class ChaseState : EState
 
         //check if target has been reached
         float distance = Mathf.Abs(target.position.x - enemy.transform.position.x);
-        if(distance <= config.turnThreshold)
+        if (distance <= config.turnThreshold)
         {
-            esm.ChangeState(new EnIdleState(enemy, esm));
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 
         //check for obstacles
-        if(senses.IsHittingWall() || senses.IsAtCliff())
+        if (senses.IsHittingWall() || senses.IsAtCliff())
         {
-            esm.ChangeState(new EnIdleState(enemy, esm));
+            rb.linearVelocity = Vector2.zero;
             return;
         }
 
-        //move towards target
-        rb.linearVelocity = new Vector2(config.chaseSpeed * enemy.FacingDirection, rb.linearVelocity.y);
+        //change to chase state if target has not been reached and there are no obstacles in the way
+        esm.ChangeState(new ChaseState(enemy, esm));
     }
 
 
