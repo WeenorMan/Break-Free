@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 854987af4117f204192a3e871cdcf9e9, type: 3}
   m_Name: MeleeEnemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
-  patrolSpeed: 5
+  patrolSpeed: 2
   groundCheckDistance: 0.7
+  wallCheckDistance: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  chaseRange: 5
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64

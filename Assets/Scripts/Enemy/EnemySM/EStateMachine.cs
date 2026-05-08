@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EStateMachine : MonoBehaviour
+public class EStateMachine 
 {
     public EState CurrentState { get; private set; }
     public EState LastState { get; private set; }

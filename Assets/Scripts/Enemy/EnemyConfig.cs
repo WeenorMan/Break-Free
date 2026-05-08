@@ -9,5 +9,11 @@ public class EnemyConfig : ScriptableObject
 
     [Header("Patrol")]
     public float groundCheckDistance = 0.7f;
+    public float wallCheckDistance = 0.5f;
     public LayerMask groundLayer;
+    public LayerMask wallLayer;
+
+    [Header("Chase")]
+    public float chaseRange = 5;
+    public LayerMask targetLayer;
 }

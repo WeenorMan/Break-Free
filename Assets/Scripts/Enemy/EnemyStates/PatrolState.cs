@@ -9,7 +9,8 @@ public class PatrolState : EState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Patrol State");
+        anim.Play("Walk");
+
     }
 
     public override void Exit()
@@ -24,7 +25,19 @@ public class PatrolState : EState
 
     public override void PhysicsUpdate()
     {
-        rb.linearVelocity = new Vector2(5, rb.linearVelocity.y);
+        if (senses.GetChaseTarget())
+        {
+            esm.ChangeState(new ChaseState(enemy, esm));
+            return;
+        }
+
+        if(senses.IsHittingWall() || senses.IsAtCliff())
+        {
+            enemy.Flip();
+            return;
+        }
+
+        rb.linearVelocity = new Vector2(config.patrolSpeed * enemy.FacingDirection, rb.linearVelocity.y);
 
     }
 }
