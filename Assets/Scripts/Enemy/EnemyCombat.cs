@@ -27,7 +27,7 @@ public class EnemyCombat : MonoBehaviour
             return;
         }
         
-        Health health = hit.GetComponent<Health>();
+        Health health = hit.GetComponentInChildren<Health>();
 
         if(health != null)
         {

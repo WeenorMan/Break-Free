@@ -14,17 +14,8 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-            if (anim == null)
-            {
-                Debug.LogError("AttackState: Animator is null!");
-                return;
-            }
-            if (anim.runtimeAnimatorController == null)
-            {
-                Debug.LogError("AttackState: Animator controller is not assigned!");
-                return;
-            }
-            anim.Play("Player Attack");
+           
+            anim.Play("Attack");
         }
 
         public override void Exit()

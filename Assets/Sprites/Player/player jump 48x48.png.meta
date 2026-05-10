@@ -23,18 +23,6 @@ TextureImporter:
   - first:
       213: -4680524180659224047
     second: player jump 48x48_6
-  - first:
-      213: 8741752192708610825
-    second: player jump 48x48_7
-  - first:
-      213: 2059596060046276625
-    second: player jump 48x48_8
-  - first:
-      213: 3611970106104989618
-    second: player jump 48x48_9
-  - first:
-      213: -5875664377684537495
-    second: player jump 48x48_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -274,11 +262,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: player jump 48x48_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1124e216e007b0fb0800000000000000
+      internalID: -4680524180659224047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 90cea5828562fce408c4be4c8b7e92a7
+    spriteID: 6627489fd68959e42bfddf19da385f56
     internalID: 0
     vertices: []
     indices: 
@@ -296,6 +306,7 @@ TextureImporter:
       player jump 48x48_3: -7720507637387131711
       player jump 48x48_4: 3686693968092533872
       player jump 48x48_5: -1015630898850964173
+      player jump 48x48_6: -4680524180659224047
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

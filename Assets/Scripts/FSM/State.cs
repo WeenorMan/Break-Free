@@ -10,6 +10,7 @@ namespace Player
         protected Rigidbody2D rb;
         protected PlayerInputHandler inputHandler;
         protected PlayerCombat combat;
+        protected PlayerDamage damage;
 
         // base constructor
         protected State(PlayerScript player, StateMachine sm)
@@ -19,7 +20,8 @@ namespace Player
             this.anim = player.anim;
             this.rb = player.rb;
             this.inputHandler = player.inputHandler;
-            combat = player.combat; 
+            combat = player.combat;
+            damage = player.damage;
         }
 
         // These methods are common to all states

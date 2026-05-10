@@ -14,6 +14,8 @@ namespace Player
         public Animator anim;
         public Rigidbody2D rb;
         public PlayerCombat combat;
+        public Health health;
+        public PlayerDamage damage;
         #endregion Core Variables
 
         public TMPro.TextMeshProUGUI stateText;
@@ -63,6 +65,8 @@ namespace Player
         public WallJumpState wallJumpState;
         public WallSlideState wallSlideState;
         public AttackState attackState;
+        public DamagedState damagedState;
+        public PlayerDeathState playerDeathState;
 
         private void Awake()
         {
@@ -78,16 +82,7 @@ namespace Player
                 inputHandler = inputHost.AddComponent<PlayerInputHandler>();
             }
             anim = transform.GetChild(0).GetComponent<Animator>();
-            if (anim == null)
-            {
-                Debug.LogError("PlayerScript: Animator not found on child 0! Child name: " + (transform.childCount > 0 ? transform.GetChild(0).name : "NO CHILDREN"));
-            }
-            else
-            {
-                Debug.Log("PlayerScript: Animator found on child: " + transform.GetChild(0).name);
-                if (anim.runtimeAnimatorController == null)
-                    Debug.LogWarning("PlayerScript: Animator has no controller assigned!");
-            }
+           
             rb = GetComponent<Rigidbody2D>();
 
             // add new states here
@@ -99,6 +94,8 @@ namespace Player
             wallJumpState = new WallJumpState(this, sm);
             wallSlideState = new WallSlideState(this, sm);
             attackState = new AttackState(this, sm);
+            damagedState = new DamagedState(this, sm);
+            playerDeathState = new PlayerDeathState(this, sm);
 
             sm.Init(idleState);
         }

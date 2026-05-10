@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 public class EnemySenses : MonoBehaviour
@@ -21,6 +22,11 @@ public class EnemySenses : MonoBehaviour
     {
         Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, config.chaseRange, config.targetLayer);
         if (!hit)
+        {
+            return null;
+        }
+        PlayerScript player = hit.GetComponent<PlayerScript>();
+        if(player.sm.CurrentState == player.playerDeathState)
         {
             return null;
         }

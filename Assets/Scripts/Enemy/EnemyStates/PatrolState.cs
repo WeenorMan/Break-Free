@@ -10,7 +10,6 @@ public class PatrolState : EState
     {
         base.Enter();
         anim.Play("Walk");
-
     }
 
     public override void Exit()

@@ -864,7 +864,6 @@ GameObject:
   - component: {fileID: 742200547}
   - component: {fileID: 742200554}
   - component: {fileID: 742200552}
-  - component: {fileID: 742200556}
   - component: {fileID: 742200555}
   m_Layer: 6
   m_Name: Player
@@ -936,6 +935,8 @@ MonoBehaviour:
   anim: {fileID: 1727321044}
   rb: {fileID: 742200547}
   combat: {fileID: 1727321045}
+  health: {fileID: 1727321046}
+  damage: {fileID: 1727321047}
   stateText: {fileID: 0}
   groundCheckPos: {fileID: 540770676}
   groundCheckSize: {x: 0.39, y: 0.03}
@@ -1026,20 +1027,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoomTransitionManager
   screenFader: {fileID: 371650876}
   cameraManager: {fileID: 418498687}
---- !u!114 &742200556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 742200546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4e07b037d257b41b376c49c3cf7d04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 0
-  maxHealth: 100
 --- !u!1 &1727321041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,6 +1039,8 @@ GameObject:
   - component: {fileID: 1727321043}
   - component: {fileID: 1727321044}
   - component: {fileID: 1727321045}
+  - component: {fileID: 1727321046}
+  - component: {fileID: 1727321047}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -1167,7 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e834ff857fafdab468c747926e87e223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
-  damage: 3
+  damage: 33
   attackRadius: 0.5
   attackCooldown: 0.3
   attackPoint: {fileID: 523627446}
@@ -1175,6 +1164,36 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   player: {fileID: 742200552}
+--- !u!114 &1727321046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727321041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d4e07b037d257b41b376c49c3cf7d04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  health: 0
+  maxHealth: 100
+--- !u!114 &1727321047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727321041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37fbd45c29b6524b8e3bde5e16bfdd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDamage
+  player: {fileID: 742200552}
+  health: {fileID: 1727321046}
+  knockbackForce: 11
+  knockbackDuration: 0.2
 --- !u!1 &1786520205
 GameObject:
   m_ObjectHideFlags: 0

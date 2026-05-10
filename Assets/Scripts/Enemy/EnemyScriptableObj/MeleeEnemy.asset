@@ -31,4 +31,4 @@ MonoBehaviour:
   meleeDamage: 16
   meleeCooldown: 0.76
   knockbackDuration: 0.2
-  knockbackForce: 14
+  knockbackForce: 11
