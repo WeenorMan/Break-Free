@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 4384243730093646548}
   - component: {fileID: 6134176808155783685}
   - component: {fileID: 321911682051066656}
+  - component: {fileID: 8580390793299461822}
   m_Layer: 9
   m_Name: MeleeEnemy
   m_TagString: Untagged
@@ -300,6 +301,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
   maxHealth: 100
+--- !u!114 &8580390793299461822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2337734134192339418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c89403623403d7a44837908db4c84ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PersistentGuid
+  guid: d4c9d5c1-151e-4f62-b0ed-91acef350cc6
 --- !u!1 &6455348674517140151
 GameObject:
   m_ObjectHideFlags: 0

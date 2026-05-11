@@ -34,6 +34,7 @@ public class EnemyDamage : MonoBehaviour
 
     void HandleDeath()
     {
+
         foreach (GameObject prefab in deathParts)
         {
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.5f, 1)).normalized;

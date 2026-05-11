@@ -17,8 +17,14 @@ public class Enemy : MonoBehaviour
     public EnemyCombat Combat { get; private set; }
     #endregion components
 
+    //Persistence 
+    private WorldState worldState;
+    private PersistentGuid guid;
+    private bool isDefeated;
+
     private void Awake()
     {
+        guid = GetComponent<PersistentGuid>();
         RB = GetComponent<Rigidbody2D>();
         ESM = new EStateMachine();
         Senses = GetComponent<EnemySenses>();
@@ -28,6 +34,14 @@ public class Enemy : MonoBehaviour
 
     public void Start()
     {
+        //Persistence
+        worldState = ServiceLocator.Get<WorldState>();
+        if (worldState.defeatedEnemies.Contains(guid.Guid))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         ESM.Init(new PatrolState(this, ESM));
     }
 
@@ -54,5 +68,15 @@ public class Enemy : MonoBehaviour
             Flip();
         }
     }
+
+    /*public void Die()
+    {
+        if (isDefeated)
+        {
+            return;
+        }
+
+        worldState.defeatedEnemies.Add(guid.Guid);
+    }*/
 
 }

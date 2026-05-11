@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField ] private CinemachineCamera vCam;
+    public Transform camTransform;
     private CinemachineConfiner2D confiner;
 
     private void Awake()

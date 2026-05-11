@@ -7,7 +7,7 @@ namespace Player
 
     public class PlayerScript : MonoBehaviour
     {
-        #region Core Variables
+        #region Core Components
         [Header("Core Components")]
         public PlayerInputHandler inputHandler;
         public StateMachine sm;
@@ -16,7 +16,7 @@ namespace Player
         public PlayerCombat combat;
         public Health health;
         public PlayerDamage damage;
-        #endregion Core Variables
+        #endregion Core Components
 
         public TMPro.TextMeshProUGUI stateText;
 
@@ -54,9 +54,10 @@ namespace Player
         public bool inAir;
         public bool isGrounded;
         public bool isFacingRight;
+        public bool isControlLocked;
         #endregion Player Settings
 
-        // variables holding the different player states
+        #region States
         public IdleState idleState;
         public JumpState jumpState;
         public WalkState walkState;
@@ -67,9 +68,12 @@ namespace Player
         public AttackState attackState;
         public DamagedState damagedState;
         public PlayerDeathState playerDeathState;
+        #endregion States
 
         private void Awake()
         {
+            ServiceLocator.Register<PlayerScript>(this);
+
             sm = gameObject.AddComponent<StateMachine>();
 
             if (PlayerInputHandler.Instance != null)
@@ -184,6 +188,11 @@ namespace Player
 
         public void CheckForDash()
         {
+            if (isControlLocked)
+            {
+                return;
+            }
+
             if (inputHandler.dashTriggered && canDash)
             {
                 sm.ChangeState(dashState);
@@ -192,6 +201,11 @@ namespace Player
 
         public void CheckForJump()
         {
+            if (isControlLocked)
+            {
+                return;
+            }
+
             if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
             {
                 //Debug.Log("coyote time jump = " + coyoteTimeCounter);
@@ -213,6 +227,12 @@ namespace Player
 
         public void CheckForWalk()
         {
+            if (isControlLocked)
+            {
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
             if (inputHandler.moveInput != Vector2.zero)
             {
                 sm.ChangeState(walkState);

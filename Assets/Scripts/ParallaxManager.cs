@@ -2,19 +2,37 @@ using UnityEngine;
 
 public class ParallaxManager : MonoBehaviour
 {
-    private float startPos;
-    public GameObject cam;
-    public float parallaxEffect;
-
-    void Start()
+    [System.Serializable]
+    public class ParallaxLayer
     {
-        startPos = transform.position.x;
+        public Transform layer;
+        [Range(0,1)]public float parallaxFactor;
     }
 
-    void Update()
-    {
-        float distance = cam.transform.position.x * parallaxEffect;
+    public ParallaxLayer[] layers;
 
-        transform.position = new Vector3(startPos + distance, transform.position.y, transform.position.z);
+    public Transform camTransform;
+    private Vector3 lastCameraPosition;
+
+
+    public void Initialise(Transform camera)
+    {
+        camTransform = camera;
+        lastCameraPosition = camTransform.position;
+    }
+
+    void LateUpdate()
+    {
+        Vector3 cameraDelta = camTransform.position - lastCameraPosition;
+
+        foreach(ParallaxLayer layer in layers)
+        {
+            float moveX = cameraDelta.x * layer.parallaxFactor;
+            float moveY = cameraDelta.y * layer.parallaxFactor;
+
+            layer.layer.position += new Vector3(moveX, moveY, 0);
+        }
+
+        lastCameraPosition = camTransform.position;
     }
 }
