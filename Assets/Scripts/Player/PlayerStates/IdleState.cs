@@ -30,12 +30,12 @@ namespace Player
 
         public override void LogicUpdate()
         {
-            if(inputHandler.attackTriggered && combat.canAttack)
+            /*if(inputHandler.attackTriggered && combat.canAttack)
             {
                 sm.ChangeState(player.attackState);
-            }
+            }*/
 
-
+            player.CheckForAttack();
             player.CheckForJump();
             player.CheckForWalk();
             player.CheckForDash();

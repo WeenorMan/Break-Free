@@ -14,4 +14,9 @@ public class SceneChanger : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PlaySFXClip (int clipNumber)
+    {
+        AudioManager.instance.PlaySFXClip(clipNumber);
+    }
 }

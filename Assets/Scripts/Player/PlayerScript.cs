@@ -176,7 +176,7 @@ namespace Player
         }
 
         
-        private void OnDrawGizmos()
+        private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(groundCheckPos.position,groundCheckSize);
@@ -219,6 +219,11 @@ namespace Player
 
         public void CheckForFall()
         {
+            if (isControlLocked)
+            {
+                return;
+            }
+
             if (rb.linearVelocity.y <= 0f && !GetIsGrounded())
             {
                 sm.ChangeState(fallState);
@@ -240,13 +245,19 @@ namespace Player
 
         }
 
-        /*public void CheckForAttack()
+        public void CheckForAttack()
         {
-            if (inputHandler.attackTriggered)
+            if (isControlLocked)
             {
-               sm.ChangeState(attackState);
+                return;
             }
-        }*/
+
+
+            if (inputHandler.attackTriggered && combat.canAttack)
+            {
+                sm.ChangeState(attackState);
+            }
+        }
 
         public void AttackAnimationFinished()
         {
@@ -255,7 +266,12 @@ namespace Player
 
         public void Flip()
         {
-            if(inputHandler.moveInput.x > 0.1f)
+            if (isControlLocked)
+            {
+                return;
+            }
+
+            if (inputHandler.moveInput.x > 0.1f)
             {
                 facingDirection = 1;
             }

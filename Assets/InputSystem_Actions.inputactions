@@ -878,11 +878,33 @@
                 },
                 {
                     "name": "",
+                    "id": "5634082b-6198-4cf5-98d9-229ff992d436",
+                    "path": "<HID::Logitech Logitech Dual Action>/hat",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
                     "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05fcf34d-e51d-4481-9f23-05429ae709e9",
+                    "path": "<HID::Logitech Logitech Dual Action>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "Submit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1037,6 +1059,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "41c3996e-fefc-4bdb-97df-af0ac074c40a",
+                    "path": "<HID::Logitech Logitech Dual Action>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad;XR",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false

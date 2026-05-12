@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
 
 namespace Player
 {
@@ -36,6 +37,12 @@ namespace Player
             {
                 enemy.gameObject.GetComponent<Health>().ChangeHealth(-damage, transform.position);
             }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         }
     }
 

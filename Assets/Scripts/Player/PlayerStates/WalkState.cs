@@ -24,10 +24,7 @@ namespace Player
         {
             base.LogicUpdate();
 
-            if (inputHandler.attackTriggered && combat.canAttack)
-            {
-                sm.ChangeState(player.attackState);
-            }
+            player.CheckForAttack();
 
             if (inputHandler.moveInput == Vector2.zero)
             {
