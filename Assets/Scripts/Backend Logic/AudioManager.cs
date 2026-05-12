@@ -10,7 +10,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] AudioMixer mixer;
 
-    public AudioClip[] clips;
+    public AudioClip[] musicClips;
+    public AudioClip[] SFXClips;
     public AudioSource musicAudioSource;
     public AudioSource sfxAudioSource;
 
@@ -36,16 +37,16 @@ public class AudioManager : MonoBehaviour
         }
 
         LoadVolume();
-        //PlayMusicClip(1);
+        PlayMusicClip(0);
     }
 
     public void PlaySFXClip(int clipNumber)
     {
-        sfxAudioSource.PlayOneShot(clips[clipNumber]); // start clip  
+        sfxAudioSource.PlayOneShot(SFXClips[clipNumber]); // start clip  
     }
     public void PlayMusicClip(int clipNumber)
     {
-        musicAudioSource.PlayOneShot(clips[clipNumber]); // start clip  
+        musicAudioSource.PlayOneShot(musicClips[clipNumber]); // start clip  
     }
 
     public void StopSFXClip()

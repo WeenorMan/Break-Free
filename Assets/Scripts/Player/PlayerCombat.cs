@@ -1,6 +1,5 @@
 using Player;
 using UnityEngine;
-using static UnityEngine.Rendering.STP;
 
 namespace Player
 {
@@ -35,6 +34,7 @@ namespace Player
             Collider2D enemy = Physics2D.OverlapCircle(attackPoint.position, attackRadius, enemyLayer);
             if (enemy != null)
             {
+                AudioManager.instance.PlaySFXClip(0);
                 enemy.gameObject.GetComponent<Health>().ChangeHealth(-damage, transform.position);
             }
         }
@@ -44,6 +44,8 @@ namespace Player
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(attackPoint.position, attackRadius);
         }
+
+        
     }
 
 }
