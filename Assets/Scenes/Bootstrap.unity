@@ -1515,9 +1515,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 854816071}
-        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
-        m_MethodName: ChangeSceneNow
+      - m_Target: {fileID: 2010102749}
+        m_TargetAssemblyTypeName: PauseScript, Assembly-CSharp
+        m_MethodName: OnQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2101,7 +2101,7 @@ MonoBehaviour:
   PlayerInput: {fileID: 2010102750}
   player: {fileID: 742200552}
   pauseMenu: {fileID: 1567789247}
-  sceneChanger: {fileID: 0}
+  sceneChanger: {fileID: 854816071}
 --- !u!114 &2010102750
 MonoBehaviour:
   m_ObjectHideFlags: 0

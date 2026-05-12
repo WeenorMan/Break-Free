@@ -55,6 +55,7 @@ public class PauseScript : MonoBehaviour
     public void OnQuit()
     {
         Time.timeScale = 1f;
+        AudioManager.instance.PlayMusicClip(0);
         sceneChanger.ChangeSceneNow();
     }
 }

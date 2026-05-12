@@ -29,24 +29,30 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             print("do not destroy");
+
+            LoadVolume();
+            PlayMusicClip(0);
         }
         else
         {
             print("do destroy");
             Destroy(gameObject);
         }
-
-        LoadVolume();
-        PlayMusicClip(0);
     }
 
     public void PlaySFXClip(int clipNumber)
     {
+        sfxAudioSource.enabled = true;
         sfxAudioSource.PlayOneShot(SFXClips[clipNumber]); // start clip  
     }
     public void PlayMusicClip(int clipNumber)
     {
-        musicAudioSource.PlayOneShot(musicClips[clipNumber]); // start clip  
+        // Stop any currently playing music first
+        musicAudioSource.Stop();
+
+        musicAudioSource.enabled = true;
+        musicAudioSource.clip = musicClips[clipNumber];
+        musicAudioSource.Play(); 
     }
 
     public void StopSFXClip()

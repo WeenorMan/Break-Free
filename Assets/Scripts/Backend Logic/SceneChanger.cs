@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(sceneToLoad);
+
     }
 
     public void ExitGame()
@@ -18,5 +19,10 @@ public class SceneChanger : MonoBehaviour
     public void PlaySFXClip (int clipNumber)
     {
         AudioManager.instance.PlaySFXClip(clipNumber);
+    }
+
+    public void StopMusicClip()
+    {
+        AudioManager.instance.StopMusicClip();
     }
 }

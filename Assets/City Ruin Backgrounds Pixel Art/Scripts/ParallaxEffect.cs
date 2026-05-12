@@ -4,44 +4,31 @@ namespace CityRuinBackgroundsPixelArt
 {
     public class ParallaxEffect : MonoBehaviour
     {
-        private Transform mainCamera;
-        private Transform player;
-
-        public float parallaxIntensityX;
-        public float parallaxIntensityY;
         public float independantSpeed;
 
-        private float cameraSize;
         private float spriteWidth;
         private Vector2 initialPos;
         private float translationOffset = 0;
 
         private void Start()
         {
-            mainCamera = Camera.main.transform;
-            cameraSize = Camera.main.orthographicSize;
-            player = GameObject.FindWithTag("Player").GetComponent<Transform>();
             spriteWidth = GetComponent<SpriteRenderer>().bounds.size.x / 3;
-
-            transform.position = new Vector2(mainCamera.position.x, player.position.y - 1f);
             initialPos = transform.position;
         }
 
         private void LateUpdate()
         {
-            translationOffset += independantSpeed * Time.deltaTime * parallaxIntensityX;
+            translationOffset += independantSpeed * Time.deltaTime;
 
-            float parallaxOffsetX = (mainCamera.position.x * (1 - (parallaxIntensityX / 2))) + translationOffset;
-            float parallaxOffsetY = ((mainCamera.position.y / cameraSize) / 0.7f) * (1 - parallaxIntensityY);
+            // Simple continuous scrolling without camera dependency
+            float newX = initialPos.x + translationOffset;
+            transform.position = new Vector2(newX, initialPos.y);
 
-            transform.position = new Vector2(initialPos.x + parallaxOffsetX, initialPos.y + parallaxOffsetY);
-
-            float cameraOffsetX = mainCamera.position.x - transform.position.x;
-
-            if (cameraOffsetX > spriteWidth / 2)
-                initialPos.x += spriteWidth;
-            else if (cameraOffsetX < -spriteWidth / 2)
-                initialPos.x -= spriteWidth;
+            // Handle sprite tiling for seamless looping
+            if (translationOffset > spriteWidth)
+                translationOffset -= spriteWidth;
+            else if (translationOffset < -spriteWidth)
+                translationOffset += spriteWidth;
         }
     }
 }
