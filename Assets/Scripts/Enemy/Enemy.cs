@@ -69,14 +69,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*public void Die()
-    {
-        if (isDefeated)
-        {
-            return;
-        }
-
-        worldState.defeatedEnemies.Add(guid.Guid);
-    }*/
+    
 
 }

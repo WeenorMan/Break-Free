@@ -17,6 +17,11 @@ namespace Player
         public bool canAttack => Time.time >= nextAttackTime;
         private float nextAttackTime;
 
+        private void Start()
+        {
+            player = GetComponentInParent<PlayerScript>();
+        }
+
         public void AttackAnimationFinished()
         {
             player.AttackAnimationFinished();
@@ -37,7 +42,10 @@ namespace Player
                 AudioManager.instance.PlaySFXClip(0);
                 enemy.gameObject.GetComponent<Health>().ChangeHealth(-damage, transform.position);
             }
+            
         }
+
+        
 
         private void OnDrawGizmosSelected()
         {

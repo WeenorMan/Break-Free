@@ -589,9 +589,22 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: d37d020a55c8ef743bd2974d0b19a1e7, type: 2}
   musicClips:
   - {fileID: 8300000, guid: 57e3344450e201748a75177425c634ba, type: 3}
+  - {fileID: 8300000, guid: 8b09323c33d5bde4494902df3799ed4c, type: 3}
   SFXClips:
   - {fileID: 8300000, guid: 85555d8b2bb96c54d81adb2cfb1c4e2b, type: 3}
   - {fileID: 8300000, guid: 2718ed1c1bce1604ea9774d787aecba8, type: 3}
+  - {fileID: 8300000, guid: ad1149faddf72aa4f983a88237b99e50, type: 3}
+  - {fileID: 8300000, guid: 1871c755e5da49f47904d4b0e362c76a, type: 3}
+  - {fileID: 8300000, guid: f354a7051e090ce448a5a1f1f217e5c6, type: 3}
+  - {fileID: 8300000, guid: 57865bef10749e845a69bd56fbbe82f6, type: 3}
+  - {fileID: 8300000, guid: 7b118bca9be391b4baafe8d7bd9820b6, type: 3}
+  - {fileID: 8300000, guid: c85199cc668c4fd42b51174b63e2aa1b, type: 3}
+  - {fileID: 8300000, guid: c983c5c94d15291458a04f703378573e, type: 3}
+  - {fileID: 8300000, guid: 069dc0ca1a368ae4c8652c2261dff4a0, type: 3}
+  - {fileID: 8300000, guid: 0f73690a6887b1546a591649889ad419, type: 3}
+  - {fileID: 8300000, guid: 4f692bc970c23dd4294661fff953b98f, type: 3}
+  - {fileID: 8300000, guid: f74ef62d057546d458d5359646e5c6cc, type: 3}
+  - {fileID: 8300000, guid: 23c6fa3ef3555894c9beb92a90d763dd, type: 3}
   musicAudioSource: {fileID: 1667959204}
   sfxAudioSource: {fileID: 1348738614}
 --- !u!1 &942194079

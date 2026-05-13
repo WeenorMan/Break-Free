@@ -293,6 +293,8 @@ namespace Player
             transform.localScale = localScale;
         }
 
+        
+
     }
 
 }

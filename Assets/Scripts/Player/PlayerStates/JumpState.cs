@@ -15,7 +15,7 @@ namespace Player
         {
             base.Enter();
             anim.Play("Jump");
-            //rb.linearVelocity = new Vector2 (rb.linearVelocity.x, 0);
+            AudioManager.instance.PlaySFXClip(12);
 
             rb.AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
 
@@ -25,6 +25,7 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
+            AudioManager.instance.StopSFXClip();
 
         }
 
