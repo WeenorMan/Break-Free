@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 7ce7e4d976f35304d873bc3e5b09a6b4
+guid: fb26e560c44b58e43891963f7d487771
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3976812718019263666
-    second: Volume_slider_0
-  - first:
-      213: -6640790573585891475
-    second: Volume_slider_1
-  - first:
-      213: 2374535005767614268
-    second: Volume_slider_2
+      213: 3618592923767662413
+    second: betterscreenhud02 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -80,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,67 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Volume_slider_0
+      name: betterscreenhud02 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 52
-        height: 13
+        width: 91
+        height: 45
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 5, y: 5, z: 5, w: 5}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e43c43c27e58fc8c0800000000000000
-      internalID: -3976812718019263666
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Volume_slider_1
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 0
-        width: 52
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d6f76a1682c27d3a0800000000000000
-      internalID: -6640790573585891475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Volume_slider_2
-      rect:
-        serializedVersion: 2
-        x: 104
-        y: 0
-        width: 52
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c3f3285c10b04f020800000000000000
-      internalID: 2374535005767614268
+      spriteID: d47e9ef8713d73230800000000000000
+      internalID: 3618592923767662413
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 52ff1ae0d039fdc469b7316c509fc88b
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Volume_slider_0: -3976812718019263666
-      Volume_slider_1: -6640790573585891475
-      Volume_slider_2: 2374535005767614268
+      betterscreenhud02 1_0: 3618592923767662413
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
