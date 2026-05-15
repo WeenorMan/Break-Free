@@ -32,5 +32,20 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void ChangeHealth(int amount)
+    {
+        health += amount;
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else if (health <= 0)
+        {
+            OnDeath?.Invoke();
+        }
+        
+    }
+
 
 }

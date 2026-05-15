@@ -30,10 +30,7 @@ namespace Player
 
         public override void LogicUpdate()
         {
-            /*if(inputHandler.attackTriggered && combat.canAttack)
-            {
-                sm.ChangeState(player.attackState);
-            }*/
+            
 
             player.CheckForAttack();
             player.CheckForJump();
@@ -44,7 +41,7 @@ namespace Player
         }
         public override void PhysicsUpdate()
         {
-            //player.anim.SetFloat("xVelocity", Mathf.Abs(player.rb.linearVelocity.x));
+
             base.PhysicsUpdate();
         }
     }
