@@ -42,6 +42,7 @@ public class PauseScript : MonoBehaviour
 
             player.isControlLocked = true;
             pauseMenu.SetActive(true);
+
         }
     }
 
@@ -49,6 +50,7 @@ public class PauseScript : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         player.isControlLocked = false;
+
         Time.timeScale = 1f;
     }
 

@@ -27,6 +27,7 @@ public static class BootstrapLoader
         }
         if (!SceneManager.GetSceneByName(BootstrapScene).isLoaded)
         {
+            AudioManager.instance.PlayMusicClip(1);
             SceneManager.LoadSceneAsync(BootstrapScene, LoadSceneMode.Additive);
         }
     }

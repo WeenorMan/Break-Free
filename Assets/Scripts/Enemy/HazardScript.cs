@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class HazardScript : MonoBehaviour
 {
-    [SerializeField] private Transform respawnPoint;
+    [SerializeField] public Transform respawnPoint1;
+    [SerializeField] public Transform respawnPoint2;
     public int damage;
     public float damageCooldown = 1f;
     public LayerMask playerLayer;
@@ -37,9 +38,12 @@ public class HazardScript : MonoBehaviour
         if (playerScript != null)
         {
             playerScript.isControlLocked = true;
-            playerScript.transform.position = respawnPoint.position;
-            playerScript.isControlLocked = false;
+
+            playerScript.transform.position = playerScript.currentRespawn.position;
         }
+
+        playerScript.isControlLocked = false;
+
 
         yield break;
     }

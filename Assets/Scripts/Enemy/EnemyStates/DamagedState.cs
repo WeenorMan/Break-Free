@@ -14,6 +14,7 @@ public class DamagedState : EState
     {
         base.Enter();
         anim.Play("Hurt");
+        AudioManager.instance.PlaySFXClip(0);
         knockbackDuration = config.knockbackDuration;
         rb.linearVelocity = new Vector2(knockbackVelocity,rb.linearVelocity.y);
     }

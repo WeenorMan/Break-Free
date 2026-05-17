@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     public event Action<Vector2> OnDamaged;
@@ -7,17 +8,22 @@ public class Health : MonoBehaviour
 
     public int health;
     public int maxHealth;
+    public Slider slider;
 
     private void Start()
     {
         health = maxHealth;
+        slider.maxValue = maxHealth;
+        slider.value = health;
     }
 
     public void ChangeHealth (int amount, Vector2 sourcePosition)
     {
         health += amount;
+        slider.value = health;
 
-        if(health > maxHealth)
+
+        if (health > maxHealth)
         {
             health = maxHealth;
         }
@@ -32,9 +38,31 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void ChangeEnemyHealth(int amount, Vector2 sourcePosition)
+    {
+        health += amount;
+
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else if (health <= 0)
+        {
+            OnDeath?.Invoke();
+        }
+        else if (amount < 0)
+        {
+            OnDamaged?.Invoke(sourcePosition);
+
+        }
+    }
+
     public void ChangeHealth(int amount)
     {
         health += amount;
+        slider.value = health;
+
 
         if (health > maxHealth)
         {

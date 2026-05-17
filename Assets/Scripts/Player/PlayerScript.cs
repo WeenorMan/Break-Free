@@ -1,5 +1,6 @@
 using TMPro;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -16,6 +17,7 @@ namespace Player
         public PlayerCombat combat;
         public Health health;
         public PlayerDamage damage;
+        public HazardScript hazard;
         #endregion Core Components
 
         public TMPro.TextMeshProUGUI stateText;
@@ -27,7 +29,8 @@ namespace Player
         [SerializeField] private Transform wallCheckPos;
         [SerializeField] private Vector2 wallCheckSize = new Vector2(0.49f, 0.03f);
         [SerializeField] private LayerMask wallLayer;
-        
+        [SerializeField] public Transform currentRespawn;
+
         #region Player Settings
         [Header("Movement Settings")]
         public float walkSpeed = 3f;
@@ -293,7 +296,13 @@ namespace Player
             transform.localScale = localScale;
         }
 
-        
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Respawn"))
+            {
+                currentRespawn = other.gameObject.transform;
+            }
+        }
 
     }
 

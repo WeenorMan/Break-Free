@@ -39,8 +39,8 @@ namespace Player
             Collider2D enemy = Physics2D.OverlapCircle(attackPoint.position, attackRadius, enemyLayer);
             if (enemy != null)
             {
-                AudioManager.instance.PlaySFXClip(0);
-                enemy.gameObject.GetComponent<Health>().ChangeHealth(-damage, transform.position);
+                //AudioManager.instance.PlaySFXClip(0);
+                enemy.gameObject.GetComponent<Health>().ChangeEnemyHealth(-damage, transform.position);
             }
             
         }

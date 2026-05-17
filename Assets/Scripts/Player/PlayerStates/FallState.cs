@@ -28,6 +28,7 @@ namespace Player
                     {
                         if( rb.linearVelocity.y < 0.1f )
                         {
+                            AudioManager.instance.PlaySFXClip(4);
                             sm.ChangeState(player.wallSlideState);
                             return;
                         }
@@ -45,6 +46,7 @@ namespace Player
 
             else if (player.GetIsGrounded())
             {
+                AudioManager.instance.PlaySFXClip(4);
                 sm.ChangeState(player.idleState);
             }
 

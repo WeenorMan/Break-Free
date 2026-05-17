@@ -54,6 +54,8 @@ namespace Player
 
             float originalGravity = player.rb.gravityScale;
             rb.gravityScale = 0f;
+            AudioManager.instance.PlaySFXClip(7);
+
             rb.linearVelocity = new Vector2(player.transform.localScale.x * player.dashSpeed, 0f);
             Physics2D.IgnoreLayerCollision(6, 9, true);
 

@@ -20,6 +20,7 @@ namespace Player
         {
             base.Enter();
             anim.Play("Hurt");
+            AudioManager.instance.PlaySFXClip(9);
 
             knockbackDuration = damage.knockbackDuration;
             rb.linearVelocity = new Vector2(knockbackVelocity, rb.linearVelocity.y);
@@ -43,6 +44,11 @@ namespace Player
             {
                 rb.linearVelocity = Vector2.zero;
                 sm.ChangeState(player.idleState);
+            }
+            else if(knockbackDuration <= 0 && !player.GetIsGrounded())
+            {
+                rb.linearVelocity = Vector2.zero;
+                sm.ChangeState(player.fallState);
             }
         }
     }

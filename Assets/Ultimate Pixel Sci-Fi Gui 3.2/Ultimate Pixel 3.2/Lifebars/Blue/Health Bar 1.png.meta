@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 10f3290eca5b90744ba1400565c15deb
+guid: 234cd35f6005af74287645349b051606
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4480606243584611541
-    second: lifebar1_0
-  - first:
-      213: -4832869886747308590
-    second: lifebar1_1
+      213: 6496782814633342493
+    second: Health Bar 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -77,7 +74,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lifebar1_0
+      name: Health Bar 1_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 3
-        width: 42
-        height: 34
+        x: 0
+        y: 1
+        width: 89
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b2bedb85c50b1d1c0800000000000000
-      internalID: -4480606243584611541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: lifebar1_1
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 8
-        width: 59
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2dd8eb291723eecb0800000000000000
-      internalID: -4832869886747308590
+      spriteID: d1635196c85392a50800000000000000
+      internalID: 6496782814633342493
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      lifebar1_0: -4480606243584611541
-      lifebar1_1: -4832869886747308590
+      Health Bar 1_0: 6496782814633342493
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

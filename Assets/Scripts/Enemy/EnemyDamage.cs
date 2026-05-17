@@ -37,6 +37,8 @@ public class EnemyDamage : MonoBehaviour
 
         foreach (GameObject prefab in deathParts)
         {
+            AudioManager.instance.PlaySFXClip(2);
+            Physics2D.IgnoreLayerCollision(6, 9, true);
             Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.5f, 1)).normalized;
             GameObject part = Instantiate(prefab, transform.position, rotation);
 
@@ -45,7 +47,6 @@ public class EnemyDamage : MonoBehaviour
             Vector2 randomDirection = new Vector2(Random.Range(-1, 1), Random.Range(0.5f, 1)).normalized;
             rb.linearVelocity = randomDirection * spawnForce;
             rb.AddTorque(Random.Range(-torque, torque), ForceMode2D.Impulse);
-            Physics2D.IgnoreLayerCollision(6, 9, true);
 
             Destroy(part, lifetime);
         }

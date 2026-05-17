@@ -18,7 +18,7 @@ namespace Player
 
 
 
-            rb.linearVelocity = new Vector2 (0, 0);
+            rb.linearVelocity = Vector2.zero;
 
         }
 
