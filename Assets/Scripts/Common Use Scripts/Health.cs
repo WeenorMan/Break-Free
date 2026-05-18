@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using TMPro;
 public class Health : MonoBehaviour
 {
     public event Action<Vector2> OnDamaged;
@@ -9,6 +10,7 @@ public class Health : MonoBehaviour
     public int health;
     public int maxHealth;
     public Slider slider;
+    public TextMeshProUGUI healthTotalText;
 
     private void Start()
     {

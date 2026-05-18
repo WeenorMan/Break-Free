@@ -20,7 +20,8 @@ namespace Player
         public HazardScript hazard;
         #endregion Core Components
 
-        public TMPro.TextMeshProUGUI stateText;
+        public TextMeshProUGUI healthTotalText;
+
 
         [Header("Wall/Ground Check Settings")]
         [SerializeField] private Transform groundCheckPos;
@@ -121,6 +122,8 @@ namespace Player
         }
         void Update()
         {
+            healthTotalText.text = "Health - " + health.health + "/" + health.maxHealth;
+
             if (GetIsGrounded())
             {
                 coyoteTimeCounter = coyoteTime;
