@@ -277,6 +277,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyDamage
   enemy: {fileID: 1515373324301710188}
   health: {fileID: 321911682051066656}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
   deathParts:
   - {fileID: 7209229859471353106, guid: a7bc28d9b66d74649b2b8c11567d76ed, type: 3}
   - {fileID: 3888435375097380184, guid: d58d13b23f0ca8248bc565dfb7094f31, type: 3}
@@ -301,6 +304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   health: 0
   maxHealth: 100
+  slider: {fileID: 0}
+  healthTotalText: {fileID: 0}
 --- !u!114 &8580390793299461822
 MonoBehaviour:
   m_ObjectHideFlags: 0

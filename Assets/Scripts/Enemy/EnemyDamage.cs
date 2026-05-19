@@ -5,12 +5,14 @@ public class EnemyDamage : MonoBehaviour
 {
     [SerializeField] private Enemy enemy;
     public Health health;
+    public LayerMask wallLayer;
 
     [Header("Death FX")]
     [SerializeField] private GameObject[] deathParts;
     [SerializeField] private float spawnForce = 5f;
     [SerializeField] private float torque = 5f;
     [SerializeField] private float lifetime = 2f;
+    
 
 
     private void OnEnable()
@@ -27,7 +29,17 @@ public class EnemyDamage : MonoBehaviour
     void HandleDamage(Vector2 sourcePosition)
     {
         int knockbackDir = 0;
-        knockbackDir = transform.position.x > sourcePosition.x ? 1 : -1;
+        if(Physics2D.Raycast(transform.position, Vector2.right, 0.5f + wallLayer))
+        {
+            knockbackDir = transform.position.x > sourcePosition.x ? 1 : -1;
+
+        }
+        else if (Physics2D.Raycast(transform.position, Vector2.left, 0.5f + wallLayer))
+        {
+            knockbackDir = transform.position.x > sourcePosition.x ? -1 : 1;
+
+        }
+
 
         enemy.ESM.ChangeState(new DamagedState(enemy, knockbackDir, enemy.ESM));
     }

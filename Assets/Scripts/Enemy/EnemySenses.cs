@@ -15,7 +15,9 @@ public class EnemySenses : MonoBehaviour
     }
     public bool IsHittingWall()
     {
-        return Physics2D.Raycast(wallCheck.position, Vector2.right, config.wallCheckDistance, config.wallLayer);
+        Vector2 direction = Vector2.right * enemy.FacingDirection;
+
+        return Physics2D.Raycast(wallCheck.position, direction, config.wallCheckDistance, config.wallLayer);
     }
 
     public Transform GetChaseTarget()
