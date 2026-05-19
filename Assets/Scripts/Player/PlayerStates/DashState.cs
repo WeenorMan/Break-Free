@@ -49,6 +49,11 @@ namespace Player
 
         private IEnumerator Dash()
         {
+            if (!player.GetIsGrounded())
+            {
+                player.hasDashed = true;
+            }
+
             player.canDash = false;
             player.isDashing = true;
 
@@ -75,7 +80,11 @@ namespace Player
                 sm.ChangeState(player.idleState);
             }
 
+
+
             yield return new WaitForSeconds(player.dashCooldown);
+
+
             player.canDash = true;
         }
     }

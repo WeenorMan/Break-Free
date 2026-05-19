@@ -15,7 +15,7 @@ namespace Player
         {
             base.Enter();
             anim.Play("WallSlide");
-
+            player.hasDashed = false;
             //player.ForceFlip();
         }
 

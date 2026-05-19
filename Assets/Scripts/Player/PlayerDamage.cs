@@ -1,4 +1,5 @@
 using Player;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -33,7 +34,10 @@ public class PlayerDamage : MonoBehaviour
 
     void HandleDeath()
     {
-         player.sm.ChangeState(player.playerDeathState);
-         Physics2D.IgnoreLayerCollision(6, 9, true);
+        player.isDying = true;
+        player.sm.ChangeState(player.playerDeathState);
+        Physics2D.IgnoreLayerCollision(6, 9, true);
     }
+
+   
 }

@@ -59,6 +59,10 @@ namespace Player
         public bool isGrounded;
         public bool isFacingRight;
         public bool isControlLocked;
+        public bool hasJumped;
+        public bool isDying = false;
+       
+
         #endregion Player Settings
 
         #region States
@@ -126,6 +130,8 @@ namespace Player
 
             if (GetIsGrounded())
             {
+                hasDashed = false;
+                hasJumped = false;
                 coyoteTimeCounter = coyoteTime;
             }
             else
@@ -154,7 +160,6 @@ namespace Player
         {
             if (Physics2D.OverlapBox(groundCheckPos.position, groundCheckSize, 0, groundLayer))
             {
-                inAir = false;
                 return true;
             }
             else
@@ -199,7 +204,7 @@ namespace Player
                 return;
             }
 
-            if (inputHandler.dashTriggered && canDash)
+            if ((GetIsGrounded() || !hasDashed) && inputHandler.dashTriggered && canDash)
             {
                 sm.ChangeState(dashState);
             }
@@ -212,7 +217,7 @@ namespace Player
                 return;
             }
 
-            if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
+            if (coyoteTimeCounter > 0 && jumpBufferCounter > 0 && !hasJumped)
             {
                 //Debug.Log("coyote time jump = " + coyoteTimeCounter);
 

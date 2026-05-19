@@ -14,6 +14,7 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
+            player.hasJumped = true;
             anim.Play("Jump");
             AudioManager.instance.PlaySFXClip(12);
 
@@ -25,7 +26,6 @@ namespace Player
         public override void Exit()
         {
             base.Exit();
-            AudioManager.instance.StopSFXClip();
 
         }
 
@@ -57,6 +57,7 @@ namespace Player
 
             else if (player.GetIsGrounded() && rb.linearVelocity.y <= 0f)
             {
+
                 sm.ChangeState(player.idleState);
             }
 

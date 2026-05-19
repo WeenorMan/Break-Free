@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Player
 {
     public class PlayerDeathState : State
     {
+        private float deathDuration = 1.5f;
+
 
         public PlayerDeathState(PlayerScript player, StateMachine sm) : base(player, sm)
         {
@@ -12,9 +15,9 @@ namespace Player
         public override void Enter()
         {
             base.Enter();
-           
             anim.Play("Death");
-            rb.linearVelocity = Vector2.zero;
+
+
         }
 
         public override void Exit()
@@ -32,6 +35,17 @@ namespace Player
             base.PhysicsUpdate();
 
             
+        }
+
+        private IEnumerator PlayerDeath()
+        {
+            rb.linearVelocity = Vector2.zero;
+            AudioManager.instance.PlaySFXClip(8);
+
+            yield return new WaitForSeconds(deathDuration);
+
+
+
         }
     }
 }
