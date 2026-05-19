@@ -12,8 +12,6 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         EventSystem.current.SetSelectedGameObject(menuFirst);
-        mainMenu.SetActive(true);
-        settingsMenu.SetActive(false);
     }
 
     public void OpenSettingsMenu()
