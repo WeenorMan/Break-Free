@@ -28,7 +28,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   meleeRange: 0.4
-  meleeDamage: 16
+  meleeDamage: 20
   meleeCooldown: 0.76
   knockbackDuration: 0.2
   knockbackForce: 11

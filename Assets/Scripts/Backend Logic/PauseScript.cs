@@ -2,6 +2,7 @@ using Player;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.DebugUI;
 
 public class PauseScript : MonoBehaviour
@@ -39,6 +40,11 @@ public class PauseScript : MonoBehaviour
 
     public void HandlePause()
     {
+        if (optionsMenu.activeSelf)
+        {
+            return;
+        }
+
         if (pausePressed)
         {
             pausePressed = false;
@@ -66,14 +72,17 @@ public class PauseScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioManager.instance.PlayMusicClip(0);
-        sceneChanger.ChangeSceneNow();
+        SceneManager.LoadScene(sceneChanger.sceneToLoad);
+
     }
 
     public void TryAgain()
     {
         Time.timeScale = 1f;
         AudioManager.instance.PlayMusicClip(1);
-        sceneChanger.ChangeSceneNow();
+        SceneManager.LoadScene(sceneChanger.sceneToLoad);
+        Debug.Log("scene loaded = " +  sceneChanger.sceneToLoad);
+
 
     }
 
