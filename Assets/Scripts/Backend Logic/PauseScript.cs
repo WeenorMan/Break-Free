@@ -12,9 +12,11 @@ public class PauseScript : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject deathMenu;
+    [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject pauseFirst;
     [SerializeField] private GameObject deathFirst;
     [SerializeField] private GameObject optionsFirst;
+    [SerializeField] private GameObject controlsFirst;
     [SerializeField] private SceneChanger sceneChanger; 
     private bool pausePressed;
 
@@ -40,7 +42,7 @@ public class PauseScript : MonoBehaviour
 
     public void HandlePause()
     {
-        if (optionsMenu.activeSelf)
+        if (optionsMenu.activeSelf || controlsMenu.activeSelf)
         {
             return;
         }
@@ -101,6 +103,22 @@ public class PauseScript : MonoBehaviour
         pauseMenu.SetActive(true);
         optionsMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(pauseFirst);
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+    }
+    public void OpenControlsMenu()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        optionsMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(controlsFirst);
+        Debug.Log(EventSystem.current.currentSelectedGameObject.name);
+    }
+    public void CloseControlsMenu()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        optionsMenu.SetActive(true);
+        controlsMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(optionsFirst);
         Debug.Log(EventSystem.current.currentSelectedGameObject.name);
     }
 
