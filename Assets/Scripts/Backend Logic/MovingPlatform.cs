@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class MovingPlatform : MonoBehaviour
 {
@@ -10,14 +12,13 @@ public class MovingPlatform : MonoBehaviour
     private float moveSpeed = 2f;
 
     private Vector3 nextPosition;
+    private string bootstrapSceneName = "Bootstrap";
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         nextPosition = point2.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, nextPosition, moveSpeed * Time.deltaTime);
@@ -40,6 +41,12 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.parent = null;
+
+            Scene bootstrapScene = SceneManager.GetSceneByName(bootstrapSceneName);
+            if (bootstrapScene.IsValid())
+            {
+                SceneManager.MoveGameObjectToScene(collision.gameObject, bootstrapScene);
+            }
         }
     }
 }

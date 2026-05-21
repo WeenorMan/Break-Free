@@ -63,6 +63,7 @@ public class Health : MonoBehaviour
     public void ChangeHealth(int amount)
     {
         health += amount;
+        slider.maxValue = maxHealth;
         slider.value = health;
 
 

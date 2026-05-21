@@ -13,7 +13,7 @@ public class MaxHPIncrease : MonoBehaviour
         {
             AudioManager.instance.PlaySFXClip(10);
             health.maxHealth += maxHealthIncrease;
-            health.health = health.maxHealth;
+            health.ChangeHealth(health.maxHealth);
             Destroy(gameObject);
         }
     }
