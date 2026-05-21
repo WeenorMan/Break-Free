@@ -35,6 +35,7 @@ public class PlayerDamage : MonoBehaviour
     void HandleDeath()
     {
         player.isDying = true;
+        player.isControlLocked = true;
         player.sm.ChangeState(player.playerDeathState);
         Physics2D.IgnoreLayerCollision(6, 9, true);
     }

@@ -1,20 +1,20 @@
 using UnityEngine;
 
-public class PickupScript : MonoBehaviour
+public class MaxHPIncrease : MonoBehaviour
 {
+    public int maxHealthIncrease = 20;
     public Health health;
-    public int healthIncrease = 30;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         Health health = other.GetComponentInChildren<Health>();
 
         if (other.CompareTag("Player"))
         {
-            health.ChangeHealth(healthIncrease);
             AudioManager.instance.PlaySFXClip(10);
+            health.maxHealth += maxHealthIncrease;
+            health.health = health.maxHealth;
             Destroy(gameObject);
         }
     }
-
-    
 }

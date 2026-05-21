@@ -18,6 +18,8 @@ namespace Player
         {
             base.Enter();
             anim.Play("Death");
+            player.isControlLocked = true;
+
             if (player.isDying)
             {
                 player.StartCoroutine(PlayerDeath());
@@ -44,7 +46,6 @@ namespace Player
         private IEnumerator PlayerDeath()
         {
             rb.linearVelocity = Vector2.zero;
-            player.isControlLocked = true;
             AudioManager.instance.PlaySFXClip(8);
 
             yield return new WaitForSeconds(deathDuration);

@@ -34,7 +34,7 @@ public class RoomTransitionManager : MonoBehaviour
 
         if (!string.IsNullOrEmpty(spawnID))
         {
-            yield return screenFader.Fade(0f, 1f, 0.5f);
+            yield return screenFader.Fade(0f, 1f, 1f);
 
         }
 

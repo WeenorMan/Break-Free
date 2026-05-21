@@ -4,6 +4,7 @@ public static class BootstrapLoader
 {
     private const string BootstrapScene = "Bootstrap";
     private const string MainMenuScene = "MainMenu";
+    private const string EndScene = "EndScene";
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
 
@@ -21,7 +22,7 @@ public static class BootstrapLoader
 
     private static void EnsureBootstrapLoaded(Scene scene)
     {
-        if(scene.name == MainMenuScene)
+        if(scene.name == MainMenuScene || scene.name == EndScene)
         {
             return;
         }

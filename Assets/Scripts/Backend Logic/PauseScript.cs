@@ -42,7 +42,7 @@ public class PauseScript : MonoBehaviour
 
     public void HandlePause()
     {
-        if (optionsMenu.activeSelf || controlsMenu.activeSelf)
+        if (optionsMenu.activeSelf || controlsMenu.activeSelf || deathMenu.activeSelf)
         {
             return;
         }

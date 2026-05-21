@@ -1,5 +1,6 @@
 using Player;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -71,6 +72,11 @@ namespace Player
             player.isDashing = false;
 
 
+            if (player.isDying)
+            {
+                yield break;
+            }
+
             if (!player.GetIsGrounded())
             {
                 sm.ChangeState(player.fallState);
@@ -80,7 +86,7 @@ namespace Player
                 sm.ChangeState(player.idleState);
             }
 
-
+           
 
             yield return new WaitForSeconds(player.dashCooldown);
 

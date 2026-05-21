@@ -73,9 +73,24 @@ public class Health : MonoBehaviour
         else if (health <= 0)
         {
             OnDeath?.Invoke();
+            
         }
         
     }
 
+    public void ChangeEnemyHealth(int amount)
+    {
+        health += amount;
+        slider.value = health;
 
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else if (health <= 0)
+        {
+            OnDeath?.Invoke();
+
+        }
+    }
 }

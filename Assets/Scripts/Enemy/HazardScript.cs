@@ -4,31 +4,47 @@ using UnityEngine;
 
 public class HazardScript : MonoBehaviour
 {
-    [SerializeField] public Transform respawnPoint1;
-    [SerializeField] public Transform respawnPoint2;
-    public int damage;
+    public Transform[] respawnPoints;
+    [SerializeField] public int playerDamage = 1;
+    [SerializeField] public int enemyDamage = 1;
     public float damageCooldown = 1f;
     public LayerMask playerLayer;
+    public LayerMask enemyLayer;
     public Health health;
 
 
-    public void DealDamage(Collider2D other)
+    public void DealPlayerDamage(Collider2D other)
     {
         Health health = other.GetComponentInChildren<Health>();
 
-        health.ChangeHealth(-damage);
+        health.ChangeHealth(-playerDamage);
     }
+    public void DealEnemyDamage(Collider2D other)
+    {
+        Health health = other.GetComponent<Health>();
 
+        if (health != null)
+        {
+            health.ChangeEnemyHealth(-enemyDamage, transform.position);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
        if(other.CompareTag("Player"))
        {
-            DealDamage(other);
+            DealPlayerDamage(other);
             StartCoroutine(Respawn(other.gameObject));
 
             Debug.Log("damaged the player");
-       } 
+       }
+
+       if (other.CompareTag("Enemy"))
+       {
+            DealEnemyDamage(other);
+
+            Debug.Log("damaged the enemy");
+       }
     }
 
     private IEnumerator Respawn(GameObject player)
@@ -42,8 +58,16 @@ public class HazardScript : MonoBehaviour
             playerScript.transform.position = playerScript.currentRespawn.position;
         }
 
-        playerScript.isControlLocked = false;
+        if(playerScript != null && playerScript.isDying)
+        {
+            playerScript.isControlLocked = true;
 
+        }
+        else if(playerScript != null)
+        {
+            playerScript.isControlLocked = false;
+
+        }
 
         yield break;
     }
