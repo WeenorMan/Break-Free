@@ -61,13 +61,12 @@ public class HazardScript : MonoBehaviour
         if(playerScript != null && playerScript.isDying)
         {
             playerScript.isControlLocked = true;
-
+            yield break;
         }
-        else if(playerScript != null)
-        {
-            playerScript.isControlLocked = false;
 
-        }
+        yield return new WaitForSeconds(0.5f);
+        playerScript.isControlLocked = false;
+
 
         yield break;
     }

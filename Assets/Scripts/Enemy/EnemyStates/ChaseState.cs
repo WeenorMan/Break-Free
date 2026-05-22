@@ -17,7 +17,7 @@ public class ChaseState : EState
     public override void Exit()
     {
         base.Exit();
-        rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
     }
 
     public override void LogicUpdate()
