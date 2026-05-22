@@ -82,7 +82,6 @@ public class Health : MonoBehaviour
     public void ChangeEnemyHealth(int amount)
     {
         health += amount;
-        slider.value = health;
 
         if (health > maxHealth)
         {

@@ -31,7 +31,7 @@ namespace Player
         public override void LogicUpdate()
         {
             
-
+            player.CheckForFall();
             player.CheckForAttack();
             player.CheckForJump();
             player.CheckForWalk();

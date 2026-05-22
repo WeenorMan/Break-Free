@@ -3226,21 +3226,21 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move - left stick/d-pad/arrow keys/a,d keys
+  m_text: 'Move - left stick/d-pad/arrow keys
 
 
     Jump - A button/spacebar
 
 
     Attack
-    - X button/left mouse click
+    - X button/left mouse click/C key
 
 
     Dash - Left Bumper/Left Shift
 
 
-    Pause -
-    Start Button/escape key
+    Pause
+    - Start Button/escape key
 
 
 '
@@ -6827,7 +6827,7 @@ GameObject:
   - component: {fileID: 2010102750}
   m_Layer: 0
   m_Name: MenuManager
-  m_TagString: Untagged
+  m_TagString: PauseManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6870,6 +6870,7 @@ MonoBehaviour:
   optionsFirst: {fileID: 1800022192}
   controlsFirst: {fileID: 531947256}
   sceneChanger: {fileID: 854816071}
+  pausePressed: 0
 --- !u!114 &2010102750
 MonoBehaviour:
   m_ObjectHideFlags: 0

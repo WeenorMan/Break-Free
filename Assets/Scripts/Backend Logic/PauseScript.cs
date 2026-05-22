@@ -9,16 +9,16 @@ public class PauseScript : MonoBehaviour
 {
     public PlayerInput PlayerInput;
     [SerializeField] private PlayerScript player;
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject optionsMenu;
-    [SerializeField] private GameObject deathMenu;
-    [SerializeField] private GameObject controlsMenu;
+    [SerializeField] public GameObject pauseMenu;
+    [SerializeField] public GameObject optionsMenu;
+    [SerializeField] public GameObject deathMenu;
+    [SerializeField] public GameObject controlsMenu;
     [SerializeField] private GameObject pauseFirst;
     [SerializeField] private GameObject deathFirst;
     [SerializeField] private GameObject optionsFirst;
     [SerializeField] private GameObject controlsFirst;
     [SerializeField] private SceneChanger sceneChanger; 
-    private bool pausePressed;
+    public bool pausePressed;
 
 
     private void Awake()
